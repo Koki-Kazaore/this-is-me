@@ -80,10 +80,10 @@ const AboutSection: React.FC = () => {
                 <div className='mt-4 md:mt-0 text-left flex flex-col h-full'>
                     <h2 className='text-4xl font-bold text-white mb-4'>About Me</h2>
                     <p className='text-base lg:text-lg'>
-                        Hi, I'm Koki Kazaore. I'm originally from Shiga and I live in Fukui, Japan. I'm styding IoT and network sercurity related to IoT at the Graduate School of Engineering , Fukui University.<br />
-                        Additionary, I'm working as an intern web application engineer at a SaaS company in Osaka.<br />
+                        Hi, I&apos;m Koki Kazaore. I&apos;m originally from Shiga and I live in Fukui, Japan. I&apos;m styding IoT and network sercurity related to IoT at the Graduate School of Engineering , Fukui University.<br />
+                        Additionary, I&apos;m working as an intern web application engineer at a SaaS company in Osaka.<br />
                         <br />
-                        My hobbies include working out and watching sports. I like various kinds of sports, but I'm especially fond of soccer, baseball, and American football.<br />
+                        My hobbies include working out and watching sports. I like various kinds of sports, but I&apos;m especially fond of soccer, baseball, and American football.<br />
                         <br />
                         I spend my days feeling grateful for the opportunity to study what I love all day long.
                     </p>
