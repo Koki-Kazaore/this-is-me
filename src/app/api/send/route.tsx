@@ -53,8 +53,8 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
 // export async function POST() {
 //   try {
 //     const data = await resend.emails.send({
-//       from: 'Koki <kokikazaore@gmail.com>',
-//       to: ['kokikazaore@gmail.com'],
+//       from: 'Koki <xxx@gmail.com>',
+//       to: ['xxx@gmail.com'],
 //       subject: 'Hello world',
 //       react: EmailTemplate({ firstName: 'John' }),
 //     });
