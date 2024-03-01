@@ -17,7 +17,7 @@ const projectsData: Project[] = [
     {
         id: 1,
         title: 'PFC BALANCE',
-        description: 'This is an web application that allows you to manage PFC by simply taking a photo of the food you ead.',
+        description: 'A web application that allows you to manage your PFC by simply taking a picture of the food you eat.',
         image: 'images/projects/1.png',
         tag: ['All', 'Web'],
         gitUrl: 'https://github.com/Koki-Kazaore/PFC-BALANCE',
@@ -25,7 +25,7 @@ const projectsData: Project[] = [
     {
         id: 2,
         title: 'DeLiDev',
-        description: 'A platform that realizes proxy delivery of parcels. Solving the shortage of logistics personnel.',
+        description: 'A platform that enables package delivery service. It contributes to solving the shortage of logistics personnel.',
         image: 'images/projects/2.png',
         tag: ['All', 'Web'],
         gitUrl: 'https://github.com/Koki-Kazaore/spark-2023-teamS',
@@ -33,7 +33,7 @@ const projectsData: Project[] = [
     {
         id: 3,
         title: 'DannnePoint.com',
-        description: 'A web application for visualizing vitamin D synthesis. Energy from sunlight contributes to mental health.',
+        description: 'A web application that visualizes vitamin D synthesis. Energy from sunlight contributes to mental health.',
         image: 'images/projects/3.png',
         tag: ['All', 'Web'],
         gitUrl: 'https://github.com/Koki-Kazaore/Danneza',
@@ -41,7 +41,7 @@ const projectsData: Project[] = [
     {
         id: 4,
         title: ' One-Click Progress Sharing ',
-        description: 'A one-click progress sharing tool using websockets. We will contribute to creating a company environment where it is easy to ask questions.',
+        description: 'One-click progress sharing tool using WebSocket. Contributes to the creation of an internal environment in which it is easy to ask questions.',
         image: 'images/projects/noImage.png',
         tag: ['All', 'Web'],
         gitUrl: 'https://github.com/Koki-Kazaore/One-Click-Progress-Sharing',
@@ -49,7 +49,7 @@ const projectsData: Project[] = [
     {
         id: 5,
         title: 'Bikeying',
-        description: 'This is an IoT project aiming to make bike sharing CtoC. Contributing to revitalizing mobility.',
+        description: 'An IoT project aiming to make bike sharing C-to-C. Contributes to the revitalization of mobility.',
         image: 'images/projects/noImage.png',
         tag: ['All', 'Else'],
         gitUrl: 'https://github.com/Koki-Kazaore/smart-lock',
