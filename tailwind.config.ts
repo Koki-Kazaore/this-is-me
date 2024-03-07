@@ -16,6 +16,9 @@ const config: Config = {
       },
       height: {
         515: '515px', // カスタムの高さ値
+      },
+      screens: {
+        'xs': '324px', // Samsung Galaxy Fold
       }
     },
     colors: {
