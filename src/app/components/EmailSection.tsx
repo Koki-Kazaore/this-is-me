@@ -1,5 +1,5 @@
 'use client'
-import React, { FormEvent } from 'react'
+import React, { FormEvent, useState } from 'react'
 import GithubIcon from '../../../public/github-icon.svg'
 import LinkedinIcon from '../../../public/linkedin-icon.svg'
 import XIcon from '../../../public/x-icon.svg'
@@ -8,8 +8,15 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const EmailSection: React.FC = () => {
+    // State to manage button text
+    const [buttonText, setButtonText] = useState('Send Message');
+    // State that controls whether or not the transmission process is in progress.
+    const [isSending, setIsSending] = useState(false);
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        // Start transmission process
+        setIsSending(true);
 
         const target = e.target as typeof e.target & {
             email: { value: string };
@@ -22,9 +29,7 @@ const EmailSection: React.FC = () => {
             subject: target.subject.value,
             message: target.message.value,
         }
-        // console.log(data); // これ上手くいってる
         const JSONdata = JSON.stringify(data);
-        // console.log(JSONdata); // okay
         const endpoint = '/api/send';
 
         // サーバーにデータを送信するためのリクエストを作成
@@ -39,21 +44,23 @@ const EmailSection: React.FC = () => {
             body: JSONdata,
         }
 
-        const response = await fetch(endpoint, options);
-        // console.log(response); // okay
-        if (!response.ok) {
-            const text = await response.text();
-            console.log(`HTTP error! status: ${response.status}, body: ${text}`);
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        // const text = await response.text();
-        // console.log(text);
-
-        const resData = await response.json();
-        console.log(resData);
-        if (resData.status === 200) {
-            console.log('Message sent.');
+        try {
+            const response = await fetch(endpoint, options);
+            if (!response.ok) {
+                const text = await response.text();
+                // console.log(`HTTP error! status: ${response.status}, body: ${text}`);
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            // Processing when mail is successfully sent
+            // console.log('Message sent.');
+            // Update button text
+            setButtonText('Email sent!');
+        } catch (error) {
+            // console.error(error);
+            // Error handling (e.g., notifying users if necessary)
+        } finally {
+            // End of transmission process
+            setIsSending(false);
         }
     }
 
@@ -81,7 +88,7 @@ const EmailSection: React.FC = () => {
                     </Link>
                 </div>
             </div>
-            {/* <div>
+            <div>
                 <form className='flex flex-col' onSubmit={handleSubmit}>
                     <div className='mb-6'>
                         <label 
@@ -135,11 +142,12 @@ const EmailSection: React.FC = () => {
                     <button
                         type='submit'
                         className='bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 px-5 rounded-lg w-full'
+                        disabled={isSending} // Disable button during transmission
                     >
-                        Send Message
+                        {buttonText}
                     </button>
                 </form>
-            </div> */}
+            </div>
         </section>
     )
 }
