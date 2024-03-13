@@ -12,11 +12,14 @@ if (!resendApiKey || !fromEmail) {
 const resend = new Resend(resendApiKey);
 
 export async function POST(req: Request, res: Response) {
+    // Retrieving data from a request
     const { email, subject, message } = await req.json();
 
     try {
+        // Send Email
         const data = await resend.emails.send({
             from: 'onbording@resend.dev',
+            reply_to: email, // Inquirer's e-mail address
             to: fromEmail,
             subject: subject,
             react: (
@@ -25,6 +28,8 @@ export async function POST(req: Request, res: Response) {
                     <p>Thank you for contacting me!</p>
                     <p>New message submitted:</p>
                     <p>{message}</p>
+                    <br/>
+                    <p>Reply to: {email}</p>
                 </>
             ),
         });
