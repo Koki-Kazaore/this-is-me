@@ -19,7 +19,7 @@ const HeroSection = () => {
                         Hello, I&apos;m{" "}
                     </span>
                     <br />
-                    <div className='h-44 sm:h-52 md:h-40 lg:h-515 xl:h-96 overflow-hidden'>
+                    <div className='h-44 sm:h-52 md:h-40 lg:h-520 2xl:h-96 overflow-hidden'>
                         <TypeAnimation
                             sequence={[
                                 // Same substring at the start will only be typed out once, initially
