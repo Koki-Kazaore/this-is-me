@@ -15,7 +15,7 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       height: {
-        515: '515px', // カスタムの高さ値
+        520: '520px', // カスタムの高さ値
       },
       screens: {
         'xs': '324px', // Samsung Galaxy Fold
