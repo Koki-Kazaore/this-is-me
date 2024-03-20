@@ -116,6 +116,8 @@ const ProjectsSection: React.FC = () => {
                     </motion.li>
                 ))}
             </ul>
+            {/* Breakpoint when "Hire me" button is pressed */}
+            <div id='letsConnect'></div>
         </section>
     )
 }
