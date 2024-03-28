@@ -80,7 +80,7 @@ const EmailSection: React.FC = () => {
                     <Link href='https://www.linkedin.com/in/kazaooo/'>
                         <Image src={LinkedinIcon} alt='Linkedin Icon' width={48} height={48} />
                     </Link>
-                    <Link href='https://www.instagram.com/zaka_zaka__oo/?hl=ja'>
+                    <Link href='https://www.instagram.com/kaza.ooo'>
                         <Image src={InstagramIcon} alt='Instagram Icon' width={48} height={48} />
                     </Link>
                     <Link href='https://twitter.com/kazaore2/'>
