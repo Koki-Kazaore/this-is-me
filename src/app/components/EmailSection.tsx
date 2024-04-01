@@ -111,6 +111,8 @@ const EmailSection: React.FC = () => {
                             name='email'
                             type='email' 
                             id='email' 
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             required 
                             className='bg-[#18191E] border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5'
                             placeholder='hoge@example.com' 
@@ -128,6 +130,8 @@ const EmailSection: React.FC = () => {
                             name='subject'
                             type='text' 
                             id='subject' 
+                            value={subject}
+                            onChange={(e) => setSubject(e.target.value)}
                             required 
                             className='bg-[#18191E] border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5'
                             placeholder='Just saying hi' 
@@ -144,6 +148,8 @@ const EmailSection: React.FC = () => {
                         <textarea 
                             name='message'
                             id='message' 
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
                             className='bg-[#18191E] border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5'
                             placeholder="Let's talk about..." 
                         />
