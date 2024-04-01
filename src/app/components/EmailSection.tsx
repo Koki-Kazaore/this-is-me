@@ -59,7 +59,13 @@ const EmailSection: React.FC = () => {
             // console.log('Message sent.');
             // Update button text
             setButtonText('Email sent!');
+
+            // Clear form content after successful submission
+            setEmail('');
+            setSubject('');
+            setMessage('');
         } catch (error) {
+            // TODO::Notify errors outside of the console
             // console.error(error);
             // Error handling (e.g., notifying users if necessary)
         } finally {
