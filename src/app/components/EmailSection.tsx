@@ -13,6 +13,10 @@ const EmailSection: React.FC = () => {
     // State that controls whether or not the transmission process is in progress.
     const [isSending, setIsSending] = useState(false);
 
+    const [email, setEmail] = useState('');
+    const [subject, setSubject] = useState('');
+    const [message, setMessage] = useState('');
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Start transmission process
