@@ -13,6 +13,10 @@ const EmailSection: React.FC = () => {
     // State that controls whether or not the transmission process is in progress.
     const [isSending, setIsSending] = useState(false);
 
+    const [email, setEmail] = useState('');
+    const [subject, setSubject] = useState('');
+    const [message, setMessage] = useState('');
+
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Start transmission process
@@ -55,7 +59,13 @@ const EmailSection: React.FC = () => {
             // console.log('Message sent.');
             // Update button text
             setButtonText('Email sent!');
+
+            // Clear form content after successful submission
+            setEmail('');
+            setSubject('');
+            setMessage('');
         } catch (error) {
+            // TODO::Notify errors outside of the console
             // console.error(error);
             // Error handling (e.g., notifying users if necessary)
         } finally {
@@ -101,6 +111,8 @@ const EmailSection: React.FC = () => {
                             name='email'
                             type='email' 
                             id='email' 
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                             required 
                             className='bg-[#18191E] border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5'
                             placeholder='hoge@example.com' 
@@ -118,6 +130,8 @@ const EmailSection: React.FC = () => {
                             name='subject'
                             type='text' 
                             id='subject' 
+                            value={subject}
+                            onChange={(e) => setSubject(e.target.value)}
                             required 
                             className='bg-[#18191E] border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5'
                             placeholder='Just saying hi' 
@@ -134,6 +148,8 @@ const EmailSection: React.FC = () => {
                         <textarea 
                             name='message'
                             id='message' 
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
                             className='bg-[#18191E] border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5'
                             placeholder="Let's talk about..." 
                         />
