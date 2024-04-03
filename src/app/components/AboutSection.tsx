@@ -1,5 +1,5 @@
 'use client'
-import React, { useTransition, useState, ReactNode} from 'react'
+import React, { useTransition, useState, ReactNode, useEffect} from 'react'
 import Image from 'next/image'
 import TabButton from './TabButton'
 import {motion} from 'framer-motion'
@@ -62,6 +62,22 @@ const AboutSection: React.FC = () => {
             setTab(id);
         });
     }
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        // Called once during initialization as well.
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
         <section id='about' className='text-white'>
             <motion.div 
