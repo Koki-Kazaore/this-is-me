@@ -1,5 +1,5 @@
 'use client'
-import React, { useTransition, useState, ReactNode} from 'react'
+import React, { useTransition, useState, ReactNode, useEffect} from 'react'
 import Image from 'next/image'
 import TabButton from './TabButton'
 import {motion} from 'framer-motion'
@@ -56,12 +56,29 @@ const TAB_DATA: TabDataItem[] = [
 const AboutSection: React.FC = () => {
     const [tab, setTab] = useState<string>('skills');
     const [isPending, startTransition] = useTransition();
+    const [isMobile, setIsMobile] = useState(false);
 
     const handleTabChange = (id: string) => {
         startTransition(() => {
             setTab(id);
         });
     }
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        // Called once during initialization as well.
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     return (
         <section id='about' className='text-white'>
             <motion.div 
@@ -70,13 +87,15 @@ const AboutSection: React.FC = () => {
                 transition={{ duration: 0.5 }}  
                 className='md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16'
             >
-                <Image 
-                    src='/images/about-image.png'
-                    alt='About me section image'
-                    width={500} 
-                    height={500}
-                    className='rounded-t-xl'
-                />
+                {isMobile ? null : (
+                    <Image 
+                        src='/images/about-image.png'
+                        alt='About me section image'
+                        width={500} 
+                        height={500}
+                        className='rounded-t-xl'
+                    />
+                )}
                 <div className='mt-4 md:mt-0 text-left flex flex-col h-full'>
                     <h2 className='text-4xl font-bold text-white mb-4'>About Me</h2>
                     <p className='text-base lg:text-lg'>
