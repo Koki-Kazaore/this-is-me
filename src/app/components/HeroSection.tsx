@@ -63,7 +63,7 @@ const HeroSection = () => {
                 <div className='rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative'>
                     <Image 
                         src='/images/hero-image.png'
-                        alt='hero image'
+                        alt='風折晃輝'
                         width={300}
                         height={300}
                         priority
