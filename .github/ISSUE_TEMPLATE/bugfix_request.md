@@ -2,7 +2,7 @@
 name: Bugfix request
 about: Explain in the situation and where the bug occurs
 title: ''
-labels: ''
+labels: bug
 assignees: ''
 
 ---
