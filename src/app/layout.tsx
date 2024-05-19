@@ -10,6 +10,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'kaza.ooo',
   description: 'koki kazaore\'s portfolio site',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
