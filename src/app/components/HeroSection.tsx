@@ -38,7 +38,7 @@ const HeroSection = () => {
                         />
                     </div>
                 </h1>
-                <p className='text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl'>
+                <p className='text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl text-left'>
                     I am studying the development of IoT prototypes and network security in university.<br />
                     Additionally, I am working on web application development as an intern web application engineer.
                 </p>
