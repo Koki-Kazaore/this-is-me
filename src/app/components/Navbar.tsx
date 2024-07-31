@@ -41,6 +41,7 @@ const Navbar: React.FC = () => {
                 <Link href={"/"} className='text-2xl md:text-5xl text-white font-semibold'>
                     KAZA.OOO
                 </Link>
+                {/* Mobile Menu */}
                 <div className='mobile-menu block md:hidden'>
                     {
                         !navbarOpen ? (
@@ -59,6 +60,16 @@ const Navbar: React.FC = () => {
                             </button>
                         )
                     }
+                </div>
+                {/* Web Menu */}
+                <div className='web-menu hidden md:block'>
+                    <ul className='flex space-x-8'>
+                        {NavLinks.map((link, index) => (
+                            <li key={index}>
+                                <NavLink href={link.path} title={link.title} />
+                            </li>
+                        ))}
+                    </ul>
                 </div>
                 <div className='menu hidden mb:block md:w-auto' id='navbar'>
                     <ul className='flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0'>
