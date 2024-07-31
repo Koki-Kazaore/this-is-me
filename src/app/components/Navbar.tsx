@@ -62,16 +62,7 @@ const Navbar: React.FC = () => {
                     }
                 </div>
                 {/* Web Menu */}
-                <div className='web-menu hidden md:block'>
-                    <ul className='flex space-x-8'>
-                        {NavLinks.map((link, index) => (
-                            <li key={index}>
-                                <NavLink href={link.path} title={link.title} />
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-                <div className='menu hidden mb:block md:w-auto' id='navbar'>
+                <div className='menu hidden md:block md:w-auto' id='navbar'>
                     <ul className='flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0'>
                         {NavLinks.map((link, index) => (
                             <li key={index}>
