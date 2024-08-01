@@ -29,8 +29,10 @@ const HeroSection = () => {
                                 1000,
                                 'Master\'s Student in Engineering @Fukui, JP', // 
                                 1000,
-                                'Web Application Engineer @Osaka, JP',
-                                1000
+                                'Web App Engineer @Osaka, JP',
+                                1000,
+                                'BE Engineer @Tokyo, JP',
+                                1000,
                             ]}
                             wrapper="span"
                             speed={50}
