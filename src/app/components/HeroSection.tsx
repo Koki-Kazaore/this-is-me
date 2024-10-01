@@ -27,9 +27,7 @@ const HeroSection = () => {
                                 1000,
                                 'IoT Developer',
                                 1000,
-                                'Master\'s Student in Engineering @Fukui, JP', // 
-                                1000,
-                                'Web App Engineer @Osaka, JP',
+                                'Master\'s Student in Engineering @Fukui, JP',
                                 1000,
                                 'BE Engineer @Tokyo, JP',
                                 1000,
