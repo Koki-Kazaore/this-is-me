@@ -8,7 +8,7 @@ const articles = [
   {
     id: 1,
     title: 'Qiita Hackathon Participation Report',
-    content: 'This is a report on the participation in the Qiita Hackathon by team:m1nus. I will introduce the team members, the theme, the process, and the results of the hackathon.'
+    abstract: 'This is a report on the participation in the Qiita Hackathon by team:m1nus. I will introduce the team members, the theme, the process, and the results of the hackathon.'
   }
 ]
 
@@ -18,7 +18,7 @@ const Blog: FC = () => {
         <Navbar />
         <div className='flex-grow sm:container mt-24 mx-auto px-12 py-4'>
           {articles.map((article) => (
-            <Article key={article.id} title={article.title} content={article.content} />
+            <Article key={article.id} title={article.title} abstract={article.abstract} />
           ))}
         </div>
         <Footer />
