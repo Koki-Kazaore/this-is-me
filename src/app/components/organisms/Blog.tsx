@@ -18,7 +18,12 @@ const Blog: FC = () => {
         <Navbar />
         <div className='flex-grow sm:container mt-24 mx-auto px-12 py-4'>
           {articles.map((article) => (
-            <Article key={article.id} title={article.title} abstract={article.abstract} />
+            <Article
+              key={article.id}
+              id={article.id}
+              title={article.title}
+              abstract={article.abstract}
+            />
           ))}
         </div>
         <Footer />
