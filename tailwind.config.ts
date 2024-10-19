@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss'
 const colors = require('tailwindcss/colors');
- 
+
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -19,7 +19,41 @@ const config: Config = {
       },
       screens: {
         'xs': '324px', // Samsung Galaxy Fold
-      }
+      },
+      typography: {
+        invert: {
+          css: {
+            h1: {
+              position: 'relative',
+              paddingBottom: '0.5rem',
+              marginBottom: '1rem',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                left: 0,
+                bottom: 0,
+                width: '100%',
+                height: '2px',
+                backgroundColor: 'currentColor',
+              },
+            },
+            h2: {
+              position: 'relative',
+              paddingBottom: '0.5rem',
+              marginBottom: '1rem',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                left: 0,
+                bottom: 0,
+                width: '100%',
+                height: '2px',
+                backgroundColor: 'currentColor',
+              },
+            },
+          },
+        },
+      },
     },
     colors: {
       ...colors,
@@ -27,6 +61,8 @@ const config: Config = {
       secondary: colors.yellow,
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 }
 export default config
