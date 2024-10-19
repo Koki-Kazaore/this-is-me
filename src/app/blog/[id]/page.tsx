@@ -10,11 +10,6 @@ type Props  = {
   params: { id: string }
 }
 
-type ArticleData = {
-  title: string
-  date: string
-}
-
 const BlogDetail = async ({ params }: Props) => {
   const { id } = params
   const articlesDirectory = path.join(process.cwd(), 'public', 'articles')
@@ -35,13 +30,15 @@ const BlogDetail = async ({ params }: Props) => {
   return (
     <main className='flex flex-col min-h-screen bg-[rgb(18,18,18)]'>
       <Navbar />
-      <div className='flex-grow sm:container mt-24 mx-auto px-12 py-4'>
-        <h1 className='text-4xl font-semibold text-white'>{data.title}</h1>
-        <p className='text-gray-400'>{data.date}</p>
-        <div
-          className='text-white mt-4'
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+      <div className='flex-grow flex justify-center items-center mt-24 mx-auto px-12 py-4'>
+        <div className='max-w-3xl w-full'>
+          <p className='text-gray-400'>{data.date}</p>
+          <h1 className='text-4xl font-semibold text-white'>{data.title}</h1>
+          <div
+            className='prose prose-invert mt-4'
+            dangerouslySetInnerHTML={{ __html: contentHtml }}
+          />
+        </div>
       </div>
       <Footer />
     </main>
