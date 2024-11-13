@@ -1,10 +1,11 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { remark } from 'remark'
-import html from 'remark-html'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import Image from 'next/image'
 
 type Props  = {
   params: { id: string }
@@ -24,9 +25,6 @@ const BlogDetail = async ({ params }: Props) => {
 
   const { data, content } = matter(filecontents)
 
-  const processedContent = await remark().use(html).process(content)
-  const contentHtml = processedContent.toString()
-
   return (
     <main className='flex flex-col min-h-screen bg-[rgb(18,18,18)]'>
       <Navbar />
@@ -34,10 +32,24 @@ const BlogDetail = async ({ params }: Props) => {
         <div className='max-w-3xl w-full'>
           <p className='text-gray-400'>{data.date}</p>
           <h1 className='text-4xl font-semibold text-white'>{data.title}</h1>
-          <div
-            className='prose prose-invert mt-4'
-            dangerouslySetInnerHTML={{ __html: contentHtml }}
-          />
+          <div className='prose prose-invert mt-4'>
+            <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+              components={{
+                img: ({ node, ...props }) => (
+                  <Image
+                    src={props.src || ''}
+                    alt={props.alt || ''}
+                    width={800}
+                    height={600}
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+                )
+              }}
+            >
+              {content}
+            </ReactMarkdown>
+          </div>
         </div>
       </div>
       <Footer />
