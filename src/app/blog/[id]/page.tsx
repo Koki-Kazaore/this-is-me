@@ -32,7 +32,7 @@ const BlogDetail = async ({ params }: Props) => {
         <div className='max-w-3xl w-full'>
           <p className='text-gray-400'>{data.date}</p>
           <h1 className='text-4xl font-semibold text-white'>{data.title}</h1>
-          <div className='prose prose-invert mt-4'>
+          <div className='prose prose-invert mt-4 max-w-none'>
             <ReactMarkdown
             remarkPlugins={[remarkGfm]}
               components={{
