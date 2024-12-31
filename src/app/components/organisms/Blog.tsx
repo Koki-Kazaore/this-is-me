@@ -6,6 +6,11 @@ import Article from '../molecules/Article'
 // Definition of article data
 const articles = [
   {
+    id: 3,
+    title: 'SOP and CORS basics and debugging',
+    abstract: 'This article introduces the fundamentals of Same-Origin Policy (SOP) and Cross-Origin Resource Sharing (CORS), detailing their configuration and verification using FastAPI and Postman.'
+  },
+  {
     id: 2,
     title: 'The first OSS contribution in my life became roadmap.sh',
     abstract: 'I made my first open-source contribution to roadmap.sh, enriching its AWS content, which inspired me to continue engaging with OSS projects.'
