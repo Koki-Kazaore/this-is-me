@@ -1,5 +1,5 @@
 import HeroSection from './components/HeroSection'
-import Navbar from './components/Navbar'
+import Navbar from './components/organisms/Navbar'
 import AboutSection from './components/AboutSection'
 import ProjectsSection from './components/ProjectsSection'
 import EmailSection from './components/EmailSection'
