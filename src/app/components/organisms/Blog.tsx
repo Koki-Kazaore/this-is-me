@@ -1,10 +1,15 @@
 import { FC } from 'react'
-import Navbar from './../Navbar'
+import Navbar from './Navbar'
 import Footer from '../Footer'
 import Article from '../molecules/Article'
 
 // Definition of article data
 const articles = [
+  {
+    id: 3,
+    title: 'SOP and CORS basics and debugging',
+    abstract: 'This article introduces the fundamentals of Same-Origin Policy (SOP) and Cross-Origin Resource Sharing (CORS), detailing their configuration and verification using FastAPI and Postman.'
+  },
   {
     id: 2,
     title: 'The first OSS contribution in my life became roadmap.sh',
