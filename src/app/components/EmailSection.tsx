@@ -84,16 +84,16 @@ const EmailSection: React.FC = () => {
                     Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
                 </p>
                 <div className='socials flex flex-row gap-2'>
-                    <Link href='https://github.com/Koki-Kazaore/'>
+                    <Link href='https://github.com/Koki-Kazaore'>
                         <Image src={GithubIcon} alt='Github Icon' width={48} height={48} />
                     </Link>
-                    <Link href='https://www.linkedin.com/in/kazaooo/'>
+                    <Link href='https://www.linkedin.com/in/kazaooo'>
                         <Image src={LinkedinIcon} alt='Linkedin Icon' width={48} height={48} />
                     </Link>
                     <Link href='https://www.instagram.com/kaza.ooo'>
                         <Image src={InstagramIcon} alt='Instagram Icon' width={48} height={48} />
                     </Link>
-                    <Link href='https://twitter.com/kazaore2/'>
+                    <Link href='https://x.com/kaza_ooo'>
                         <Image src={XIcon} alt='X Icon' width={40} height={40} />
                     </Link>
                 </div>
