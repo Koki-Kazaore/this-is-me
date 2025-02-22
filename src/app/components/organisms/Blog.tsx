@@ -6,6 +6,11 @@ import Article from '../molecules/Article'
 // Definition of article data
 const articles = [
   {
+    id: 4,
+    title: 'One Japanese dives into nwHacks, one of the largest hackathons in Western Canada',
+    abstract: 'This is a summary of my first international hackathon experience.'
+  },
+  {
     id: 3,
     title: 'SOP and CORS basics and debugging',
     abstract: 'This article introduces the fundamentals of Same-Origin Policy (SOP) and Cross-Origin Resource Sharing (CORS), detailing their configuration and verification using FastAPI and Postman.'
