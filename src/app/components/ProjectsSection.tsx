@@ -18,7 +18,7 @@ const projectsData: Project[] = [
         id: 1,
         title: 'PFC BALANCE',
         description: 'A web application that allows you to manage your PFC by simply taking a picture of the food you eat.',
-        image: 'images/projects/1.png',
+        image: '/images/projects/1.png',
         tag: ['All', 'Web'],
         gitUrl: 'https://github.com/Koki-Kazaore/PFC-BALANCE',
     },
@@ -26,7 +26,7 @@ const projectsData: Project[] = [
         id: 2,
         title: 'DeLiDev',
         description: 'A platform that enables package delivery service. It contributes to solving the shortage of logistics personnel.',
-        image: 'images/projects/2.png',
+        image: '/images/projects/2.png',
         tag: ['All', 'Web'],
         gitUrl: 'https://github.com/Koki-Kazaore/spark-2023-teamS',
     },
@@ -34,15 +34,15 @@ const projectsData: Project[] = [
         id: 3,
         title: 'DannnePoint.com',
         description: 'A web application that visualizes vitamin D synthesis. Energy from sunlight contributes to mental health.',
-        image: 'images/projects/3.png',
+        image: '/images/projects/3.png',
         tag: ['All', 'Web'],
         gitUrl: 'https://github.com/Koki-Kazaore/Danneza',
     },
     {
         id: 4,
-        title: ' One-Click Progress Sharing ',
+        title: 'One-Click Progress Sharing',
         description: 'One-click progress sharing tool using WebSocket. Contributes to the creation of an internal environment in which it is easy to ask questions.',
-        image: 'images/projects/noImage.png',
+        image: '/images/projects/noImage.png',
         tag: ['All', 'Web'],
         gitUrl: 'https://github.com/Koki-Kazaore/One-Click-Progress-Sharing',
     },
@@ -50,7 +50,7 @@ const projectsData: Project[] = [
         id: 5,
         title: 'Bikeying',
         description: 'An IoT project aiming to make bike sharing C-to-C. Contributes to the revitalization of mobility.',
-        image: 'images/projects/noImage.png',
+        image: '/images/projects/noImage.png',
         tag: ['All', 'Else'],
         gitUrl: 'https://github.com/Koki-Kazaore/smart-lock',
     },
@@ -80,32 +80,32 @@ const ProjectsSection: React.FC = () => {
                 My Projects
             </h2>
             <div className='text-white flex flex-row justify-center items-center gap-2 py-6'>
-                <ProjectTag 
-                    onClick={() => handleTagChange('All')} 
-                    name='All' 
-                    isSelected={tag === 'All'} 
+                <ProjectTag
+                    onClick={() => handleTagChange('All')}
+                    name='All'
+                    isSelected={tag === 'All'}
                 />
-                <ProjectTag 
-                    onClick={() => handleTagChange('Web')} 
-                    name='Web' 
-                    isSelected={tag === 'Web'} 
+                <ProjectTag
+                    onClick={() => handleTagChange('Web')}
+                    name='Web'
+                    isSelected={tag === 'Web'}
                 />
-                <ProjectTag 
-                    onClick={() => handleTagChange('Else')} 
-                    name='Else' 
-                    isSelected={tag === 'Else'} 
+                <ProjectTag
+                    onClick={() => handleTagChange('Else')}
+                    name='Else'
+                    isSelected={tag === 'Else'}
                 />
             </div>
             <ul ref={ref} className='grid lg:grid-cols-3 gap-8 md:gap-12'>
                 {filteredProjects.map((project, index) => (
-                    <motion.li 
+                    <motion.li
                         key={index}
-                        variants={cardVariants} 
-                        initial='initial' 
+                        variants={cardVariants}
+                        initial='initial'
                         animate={isInView ? 'animate' : 'initial'}
                         transition={{ duration: 0.3, delay: index * 0.4 }}
                     >
-                        <ProjectCard 
+                        <ProjectCard
                             key={project.id}
                             title={project.title}
                             description={project.description}
