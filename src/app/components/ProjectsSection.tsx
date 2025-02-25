@@ -32,6 +32,14 @@ const projectsData: Project[] = [
     },
     {
         id: 3,
+        title: 'Borrowhood',
+        description: 'Share More, Spend Less, Connect Always. Powered by Google Vision API, recommendations, and Llama AI to reduce overconsumption and foster community connections through shared interests.',
+        image: '/images/projects/borrowhood.png',
+        tag: ['All', 'Web'],
+        gitUrl: 'https://github.com/Koki-Kazaore/borrowhood',
+    },
+    {
+        id: 4,
         title: 'DannnePoint.com',
         description: 'A web application that visualizes vitamin D synthesis. Energy from sunlight contributes to mental health.',
         image: '/images/projects/3.png',
@@ -39,7 +47,7 @@ const projectsData: Project[] = [
         gitUrl: 'https://github.com/Koki-Kazaore/Danneza',
     },
     {
-        id: 4,
+        id: 5,
         title: 'One-Click Progress Sharing',
         description: 'One-click progress sharing tool using WebSocket. Contributes to the creation of an internal environment in which it is easy to ask questions.',
         image: '/images/projects/noImage.png',
@@ -47,7 +55,7 @@ const projectsData: Project[] = [
         gitUrl: 'https://github.com/Koki-Kazaore/One-Click-Progress-Sharing',
     },
     {
-        id: 5,
+        id: 6,
         title: 'Bikeying',
         description: 'An IoT project aiming to make bike sharing C-to-C. Contributes to the revitalization of mobility.',
         image: '/images/projects/noImage.png',
