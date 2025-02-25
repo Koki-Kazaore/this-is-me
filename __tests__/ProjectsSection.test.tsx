@@ -11,6 +11,7 @@ describe('ProjectsSection', () => {
 
     expect(screen.getByText('PFC BALANCE')).toBeInTheDocument();
     expect(screen.getByText('DeLiDev')).toBeInTheDocument();
+    expect(screen.getByText('Borrowhood')).toBeInTheDocument();
     expect(screen.getByText('DannnePoint.com')).toBeInTheDocument();
     expect(screen.getByText('One-Click Progress Sharing')).toBeInTheDocument();
     expect(screen.getByText('Bikeying')).toBeInTheDocument();
@@ -24,6 +25,7 @@ describe('ProjectsSection', () => {
 
     expect(screen.getByText('PFC BALANCE')).toBeInTheDocument();
     expect(screen.getByText('DeLiDev')).toBeInTheDocument();
+    expect(screen.getByText('Borrowhood')).toBeInTheDocument();
     expect(screen.getByText('DannnePoint.com')).toBeInTheDocument();
     expect(screen.getByText('One-Click Progress Sharing')).toBeInTheDocument();
 
@@ -40,6 +42,7 @@ describe('ProjectsSection', () => {
 
     expect(screen.queryByText('PFC BALANCE')).not.toBeInTheDocument();
     expect(screen.queryByText('DeLiDev')).not.toBeInTheDocument();
+    expect(screen.queryByText('Borrowhood')).not.toBeInTheDocument();
     expect(screen.queryByText('DannnePoint.com')).not.toBeInTheDocument();
     expect(screen.queryByText('One-Click Progress Sharing')).not.toBeInTheDocument();
   });
