@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import ProjectsSection from '../src/app/components/ProjectsSection';
+import ProjectsSection from '../../src/app/components/ProjectsSection';
 
 describe('ProjectsSection', () => {
   it('displays section headings and all projects initially', () => {
