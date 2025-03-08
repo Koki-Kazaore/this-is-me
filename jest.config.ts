@@ -181,14 +181,14 @@ const config: Config = {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
+    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { configFile: './babel.config.js' }],
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  // transformIgnorePatterns: [
-  //   "/node_modules/",
-  //   "\\.pnp\\.[^\\/]+$"
-  // ],
+  transformIgnorePatterns: [
+    '/node_modules/(?!react-markdown|remark-gfm|devlop|unified|bail|trough|remark-parse|mdast.*|micromark.*|rehype.*|react-dom|rehype-react)/',
+    // "\\.pnp\\.[^\\/]+$"
+  ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,
