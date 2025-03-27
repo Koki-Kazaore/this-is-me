@@ -6,6 +6,11 @@ import Article from '../molecules/Article'
 // Definition of article data
 const articles = [
   {
+    id: 5,
+    title: 'Dissecting Consolidated Commits with Interactive Rebase',
+    abstract: 'This article explains how to locate and inspect original commits hidden behind interactive rebase consolidations.'
+  },
+  {
     id: 4,
     title: 'One Japanese dives into nwHacks, one of the largest hackathons in Western Canada',
     abstract: 'This is a summary of my first international hackathon experience.'
