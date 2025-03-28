@@ -14,7 +14,7 @@ describe('ProjectsSection', () => {
     expect(screen.getByText('Borrowhood')).toBeInTheDocument();
     expect(screen.getByText('DannnePoint.com')).toBeInTheDocument();
     expect(screen.getByText('One-Click Progress Sharing')).toBeInTheDocument();
-    expect(screen.getByText('Bikeying')).toBeInTheDocument();
+    expect(screen.getByText('Bikeying API')).toBeInTheDocument();
   });
 
   it('displays only web projects when we click on the "Web" tag', () => {
@@ -29,7 +29,7 @@ describe('ProjectsSection', () => {
     expect(screen.getByText('DannnePoint.com')).toBeInTheDocument();
     expect(screen.getByText('One-Click Progress Sharing')).toBeInTheDocument();
 
-    expect(screen.queryByText('Bikeying')).not.toBeInTheDocument();
+    expect(screen.queryByText('Bikeying API')).not.toBeInTheDocument();
   });
 
   it('displays only the else projects when we click on the "Else" tag', () => {
@@ -38,7 +38,7 @@ describe('ProjectsSection', () => {
     const elseTagButton = screen.getByText('Else');
     fireEvent.click(elseTagButton);
 
-    expect(screen.getByText('Bikeying')).toBeInTheDocument();
+    expect(screen.getByText('Bikeying API')).toBeInTheDocument();
 
     expect(screen.queryByText('PFC BALANCE')).not.toBeInTheDocument();
     expect(screen.queryByText('DeLiDev')).not.toBeInTheDocument();
