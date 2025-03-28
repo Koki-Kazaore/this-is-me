@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
   const [navbarOpen, setNavBarOpen] = useState(false);
 
   return (
-    <nav className='fixed mx-auto border-[#33353F] top-0 left-0 right-0 z-10 bg-[#121212] bg-opacity-50 backdrop-blur-lg'>
+    <nav className='fixed mx-auto border-[#33353F] top-0 left-0 right-0 z-20 bg-[#121212] bg-opacity-50 backdrop-blur-lg'>
       <div className='flex sm:container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2'>
         <Heading
           label='KAZA.OOO'
