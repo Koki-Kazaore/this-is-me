@@ -9,6 +9,7 @@ describe('ProjectCard', () => {
     description: 'This is a test project.',
     tags: ['Test'],
     gitUrl: 'https://github.com/example/test',
+    productUrl: 'https://example.com',
   };
 
   it('renders the title and description', () => {
@@ -29,12 +30,19 @@ describe('ProjectCard', () => {
 
   it('renders Github links correctly', () => {
     render(<ProjectCard {...props} />);
-    const linkElement = screen.getByRole('link');
-    expect(linkElement).toBeInTheDocument();
-    expect(linkElement).toHaveAttribute('href', props.gitUrl);
+    const linkElement = screen.getAllByRole('link');
+    expect(linkElement[0]).toBeInTheDocument();
+    expect(linkElement[0]).toHaveAttribute('href', props.gitUrl);
   });
 
-  test('has a CodeBracketIcon(SVG) in the link', () => {
+  it('renders Product links correctly', () => {
+    render(<ProjectCard {...props} />);
+    const linkElement = screen.getAllByRole('link');
+    expect(linkElement[1]).toBeInTheDocument();
+    expect(linkElement[1]).toHaveAttribute('href', props.productUrl);
+  });
+
+  it('has a CodeBracketIcon(SVG) in the link', () => {
     const { container } = render(<ProjectCard {...props} />);
     const linkElement = container.querySelector('a');
     expect(linkElement).toBeInTheDocument();
