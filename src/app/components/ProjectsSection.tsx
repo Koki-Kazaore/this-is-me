@@ -11,6 +11,7 @@ interface Project {
     image: string;
     tag: string[];
     gitUrl: string;
+    productUrl: string;
 }
 
 const projectsData: Project[] = [
@@ -21,6 +22,7 @@ const projectsData: Project[] = [
         image: '/images/projects/1.png',
         tag: ['All', 'Web'],
         gitUrl: 'https://github.com/Koki-Kazaore/PFC-BALANCE',
+        productUrl: '',
     },
     {
         id: 2,
@@ -29,6 +31,7 @@ const projectsData: Project[] = [
         image: '/images/projects/2.png',
         tag: ['All', 'Web'],
         gitUrl: 'https://github.com/Koki-Kazaore/spark-2023-teamS',
+        productUrl: '',
     },
     {
         id: 3,
@@ -37,30 +40,34 @@ const projectsData: Project[] = [
         image: '/images/projects/borrowhood.png',
         tag: ['All', 'Web'],
         gitUrl: 'https://github.com/Koki-Kazaore/borrowhood',
+        productUrl: '',
     },
     {
         id: 4,
+        title: 'Bikeying API',
+        description: 'An IoT project aiming to make bike sharing C-to-C. Contributes to the revitalization of mobility.',
+        image: '/images/projects/bikeying_api.png',
+        tag: ['All', 'Else'],
+        gitUrl: '',
+        productUrl: 'bikeying.com',
+    },
+    {
+        id: 5,
         title: 'DannnePoint.com',
         description: 'A web application that visualizes vitamin D synthesis. Energy from sunlight contributes to mental health.',
         image: '/images/projects/3.png',
         tag: ['All', 'Web'],
         gitUrl: 'https://github.com/Koki-Kazaore/Danneza',
+        productUrl: '',
     },
     {
-        id: 5,
+        id: 6,
         title: 'One-Click Progress Sharing',
         description: 'One-click progress sharing tool using WebSocket. Contributes to the creation of an internal environment in which it is easy to ask questions.',
         image: '/images/projects/noImage.png',
         tag: ['All', 'Web'],
         gitUrl: 'https://github.com/Koki-Kazaore/One-Click-Progress-Sharing',
-    },
-    {
-        id: 6,
-        title: 'Bikeying',
-        description: 'An IoT project aiming to make bike sharing C-to-C. Contributes to the revitalization of mobility.',
-        image: '/images/projects/noImage.png',
-        tag: ['All', 'Else'],
-        gitUrl: 'https://github.com/Koki-Kazaore/smart-lock',
+        productUrl: '',
     },
 ]
 
@@ -120,6 +127,7 @@ const ProjectsSection: React.FC = () => {
                             imgUrl={project.image}
                             tags={project.tag}
                             gitUrl={project.gitUrl}
+                            productUrl={project.productUrl}
                         />
                     </motion.li>
                 ))}
