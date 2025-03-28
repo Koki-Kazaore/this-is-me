@@ -49,7 +49,7 @@ const projectsData: Project[] = [
         image: '/images/projects/bikeying_api.png',
         tag: ['All', 'Else'],
         gitUrl: '',
-        productUrl: 'bikeying.com',
+        productUrl: 'https://bikeying.com',
     },
     {
         id: 5,
