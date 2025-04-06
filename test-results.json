@@ -1,0 +1,557 @@
+{
+  "config": {
+    "configFile": "/Users/xmile0134/Developer/this-is-me/playwright.config.ts",
+    "rootDir": "/Users/xmile0134/Developer/this-is-me/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 4
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/xmile0134/Developer/this-is-me/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/xmile0134/Developer/this-is-me/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/xmile0134/Developer/this-is-me/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "/Users/xmile0134/Developer/this-is-me/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      },
+      {
+        "outputDir": "/Users/xmile0134/Developer/this-is-me/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 4
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "/Users/xmile0134/Developer/this-is-me/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.51.1",
+    "workers": 4,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "regression/homepage.spec.ts",
+      "file": "regression/homepage.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Homepage Regression Tests",
+          "file": "regression/homepage.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should display main navigation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1603,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-04-06T22:12:29.008Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0dd0e22fc76060868f45-0eef11142a92e36d76bd",
+              "file": "regression/homepage.spec.ts",
+              "line": 8,
+              "column": 7
+            },
+            {
+              "title": "should have working links",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 1,
+                      "status": "passed",
+                      "duration": 1732,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-04-06T22:12:29.005Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0dd0e22fc76060868f45-1d343983d1c0bd8a6984",
+              "file": "regression/homepage.spec.ts",
+              "line": 13,
+              "column": 7
+            },
+            {
+              "title": "should be responsive",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 6392,
+                      "error": {
+                        "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('.mobile-nav')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mobile-nav')\u001b[22m\n",
+                        "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('.mobile-nav')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mobile-nav')\u001b[22m\n\n    at /Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts:30:29",
+                        "matcherResult": {
+                          "message": "\u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('.mobile-nav')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mobile-nav')\u001b[22m\n",
+                          "pass": false,
+                          "actual": "<element(s) not found>",
+                          "name": "toBeVisible",
+                          "expected": "visible",
+                          "log": [
+                            "  - expect.toBeVisible with timeout 5000ms",
+                            "  - waiting for locator('.mobile-nav')"
+                          ],
+                          "timeout": 5000
+                        },
+                        "location": {
+                          "file": "/Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts",
+                          "column": 29,
+                          "line": 30
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetViewportSize({ width\u001b[33m:\u001b[39m \u001b[35m375\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m667\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mconst\u001b[39m mobileNav \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.mobile-nav'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m expect(mobileNav)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 31 |\u001b[39m\n \u001b[90m 32 |\u001b[39m     \u001b[90m// Check tablet view\u001b[39m\n \u001b[90m 33 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetViewportSize({ width\u001b[33m:\u001b[39m \u001b[35m768\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m1024\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts",
+                            "column": 29,
+                            "line": 30
+                          },
+                          "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('.mobile-nav')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mobile-nav')\u001b[22m\n\n\n\u001b[0m \u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetViewportSize({ width\u001b[33m:\u001b[39m \u001b[35m375\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m667\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mconst\u001b[39m mobileNav \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.mobile-nav'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m expect(mobileNav)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 31 |\u001b[39m\n \u001b[90m 32 |\u001b[39m     \u001b[90m// Check tablet view\u001b[39m\n \u001b[90m 33 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetViewportSize({ width\u001b[33m:\u001b[39m \u001b[35m768\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m1024\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts:30:29\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-04-06T22:12:29.005Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/xmile0134/Developer/this-is-me/test-results/regression-homepage-Homepa-d5eaa--Tests-should-be-responsive-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "_prompt-0",
+                          "contentType": "text/markdown",
+                          "body": "IyBJbnN0cnVjdGlvbnMKCi0gRm9sbG93aW5nIFBsYXl3cmlnaHQgdGVzdCBmYWlsZWQuCi0gRXhwbGFpbiB3aHksIGJlIGNvbmNpc2UsIHJlc3BlY3QgUGxheXdyaWdodCBiZXN0IHByYWN0aWNlcy4KLSBQcm92aWRlIGEgc25pcHBldCBvZiBjb2RlIHdpdGggdGhlIGZpeCwgaWYgcG9zc2libGUuCgojIFRlc3QgaW5mbwoKLSBOYW1lOiBIb21lcGFnZSBSZWdyZXNzaW9uIFRlc3RzID4+IHNob3VsZCBiZSByZXNwb25zaXZlCi0gTG9jYXRpb246IC9Vc2Vycy94bWlsZTAxMzQvRGV2ZWxvcGVyL3RoaXMtaXMtbWUvdGVzdHMvcmVncmVzc2lvbi9ob21lcGFnZS5zcGVjLnRzOjI2OjcKCiMgRXJyb3IgZGV0YWlscwoKYGBgCkVycm9yOiBUaW1lZCBvdXQgNTAwMG1zIHdhaXRpbmcgZm9yIGV4cGVjdChsb2NhdG9yKS50b0JlVmlzaWJsZSgpCgpMb2NhdG9yOiBsb2NhdG9yKCcubW9iaWxlLW5hdicpCkV4cGVjdGVkOiB2aXNpYmxlClJlY2VpdmVkOiA8ZWxlbWVudChzKSBub3QgZm91bmQ+CkNhbGwgbG9nOgogIC0gZXhwZWN0LnRvQmVWaXNpYmxlIHdpdGggdGltZW91dCA1MDAwbXMKICAtIHdhaXRpbmcgZm9yIGxvY2F0b3IoJy5tb2JpbGUtbmF2JykKCiAgICBhdCAvVXNlcnMveG1pbGUwMTM0L0RldmVsb3Blci90aGlzLWlzLW1lL3Rlc3RzL3JlZ3Jlc3Npb24vaG9tZXBhZ2Uuc3BlYy50czozMDoyOQpgYGAKCiMgUGFnZSBzbmFwc2hvdAoKYGBgeWFtbAotIG1haW46CiAgLSBuYXZpZ2F0aW9uOgogICAgLSBsaW5rICJLQVpBLk9PTyIKICAgIC0gYnV0dG9uCiAgLSBoZWFkaW5nICJIZWxsbywgSSdtIEtva2l8IiBbbGV2ZWw9MV0KICAtIHBhcmFncmFwaDogSSBhbSBzdHVkeWluZyB0aGUgZGV2ZWxvcG1lbnQgb2YgSW9UIHByb3RvdHlwZXMgYW5kIG5ldHdvcmsgc2VjdXJpdHkgaW4gdW5pdmVyc2l0eS4gQWRkaXRpb25hbGx5LCBJIGFtIHdvcmtpbmcgb24gd2ViIGFwcGxpY2F0aW9uIGRldmVsb3BtZW50IGFzIGFuIGludGVybiB3ZWIgYXBwbGljYXRpb24gZW5naW5lZXIuCiAgLSBidXR0b24gIkNvbnRhY3QgTWUiCiAgLSBidXR0b24gIkRvd25sb2FkIENWIgogIC0gaW1nICLpoqjmipjmmYPovJ0iCiAgLSBoZWFkaW5nICJBYm91dCBNZSIgW2xldmVsPTJdCiAgLSBwYXJhZ3JhcGg6IEhpLCBJJ20gS29raSBLYXphb3JlLiBJJ20gb3JpZ2luYWxseSBmcm9tIFNoaWdhIGFuZCBJIGxpdmUgaW4gRnVrdWksIEphcGFuLiBJJ20gc3R5ZGluZyBJb1QgYW5kIG5ldHdvcmsgc2VyY3VyaXR5IHJlbGF0ZWQgdG8gSW9UIGF0IHRoZSBHcmFkdWF0ZSBTY2hvb2wgb2YgRW5naW5lZXJpbmcgLCBGdWt1aSBVbml2ZXJzaXR5LiBBZGRpdGlvbmFyeSwgSSdtIHdvcmtpbmcgYXMgYW4gaW50ZXJuIHdlYiBhcHBsaWNhdGlvbiBlbmdpbmVlciBhdCBhIFNhYVMgY29tcGFueSBpbiBPc2FrYS4gTXkgaG9iYmllcyBpbmNsdWRlIHdvcmtpbmcgb3V0IGFuZCB3YXRjaGluZyBzcG9ydHMuIEkgbGlrZSB2YXJpb3VzIGtpbmRzIG9mIHNwb3J0cywgYnV0IEknbSBlc3BlY2lhbGx5IGZvbmQgb2Ygc29jY2VyLCBiYXNlYmFsbCwgYW5kIEFtZXJpY2FuIGZvb3RiYWxsLiBJIHNwZW5kIG15IGRheXMgZmVlbGluZyBncmF0ZWZ1bCBmb3IgdGhlIG9wcG9ydHVuaXR5IHRvIHN0dWR5IHdoYXQgSSBsb3ZlIGFsbCBkYXkgbG9uZy4KICAtIGJ1dHRvbiAiU2tpbGxzIjoKICAgIC0gcGFyYWdyYXBoOiBTa2lsbHMKICAtIGJ1dHRvbiAiRWR1Y2F0aW9uIjoKICAgIC0gcGFyYWdyYXBoOiBFZHVjYXRpb24KICAtIGJ1dHRvbiAiQ2VydGlmaWNhdGlvbnMiOgogICAgLSBwYXJhZ3JhcGg6IENlcnRpZmljYXRpb25zCiAgLSBsaXN0OgogICAgLSBsaXN0aXRlbTogUHJvZ3JhbWluZyBMYW5ndWFnZSBDIC8gQysrIC8gUHl0aG9uIC8gUEhQIC8gSmF2YVNjcmlwdAogICAgLSBsaXN0aXRlbTogRnJhbWV3b3JrIC8gTGlicmFyeSBGbGFzayAvIExhcmF2ZWwgLyBOdW1weSAvIE5leHQuanMKICAgIC0gbGlzdGl0ZW06IERhdGFiYXNlIE15U1FMIC8gU1FMaXRlCiAgICAtIGxpc3RpdGVtOiBUb29scyBHaXQgLyBEb2NrZXIgLyBBenVyZQogIC0gaGVhZGluZyAiTXkgUHJvamVjdHMiIFtsZXZlbD0yXQogIC0gYnV0dG9uICJBbGwiCiAgLSBidXR0b24gIldlYiIKICAtIGJ1dHRvbiAiRWxzZSIKICAtIGxpc3Q6CiAgICAtIGxpc3RpdGVtOgogICAgICAtIGhlYWRpbmcgIlBGQyBCQUxBTkNFIiBbbGV2ZWw9NV0KICAgICAgLSBwYXJhZ3JhcGg6IEEgd2ViIGFwcGxpY2F0aW9uIHRoYXQgYWxsb3dzIHlvdSB0byBtYW5hZ2UgeW91ciBQRkMgYnkgc2ltcGx5IHRha2luZyBhIHBpY3R1cmUgb2YgdGhlIGZvb2QgeW91IGVhdC4KICAgIC0gbGlzdGl0ZW06CiAgICAgIC0gaGVhZGluZyAiRGVMaURldiIgW2xldmVsPTVdCiAgICAgIC0gcGFyYWdyYXBoOiBBIHBsYXRmb3JtIHRoYXQgZW5hYmxlcyBwYWNrYWdlIGRlbGl2ZXJ5IHNlcnZpY2UuIEl0IGNvbnRyaWJ1dGVzIHRvIHNvbHZpbmcgdGhlIHNob3J0YWdlIG9mIGxvZ2lzdGljcyBwZXJzb25uZWwuCiAgICAtIGxpc3RpdGVtOgogICAgICAtIGhlYWRpbmcgIkJvcnJvd2hvb2QiIFtsZXZlbD01XQogICAgICAtIHBhcmFncmFwaDogU2hhcmUgTW9yZSwgU3BlbmQgTGVzcywgQ29ubmVjdCBBbHdheXMuIFBvd2VyZWQgYnkgR29vZ2xlIFZpc2lvbiBBUEksIHJlY29tbWVuZGF0aW9ucywgYW5kIExsYW1hIEFJIHRvIHJlZHVjZSBvdmVyY29uc3VtcHRpb24gYW5kIGZvc3RlciBjb21tdW5pdHkgY29ubmVjdGlvbnMgdGhyb3VnaCBzaGFyZWQgaW50ZXJlc3RzLgogICAgLSBsaXN0aXRlbToKICAgICAgLSBoZWFkaW5nICJCaWtleWluZyBBUEkiIFtsZXZlbD01XQogICAgICAtIHBhcmFncmFwaDogQW4gSW9UIHByb2plY3QgYWltaW5nIHRvIG1ha2UgYmlrZSBzaGFyaW5nIEMtdG8tQy4gQ29udHJpYnV0ZXMgdG8gdGhlIHJldml0YWxpemF0aW9uIG9mIG1vYmlsaXR5LgogICAgLSBsaXN0aXRlbToKICAgICAgLSBoZWFkaW5nICJEYW5ubmVQb2ludC5jb20iIFtsZXZlbD01XQogICAgICAtIHBhcmFncmFwaDogQSB3ZWIgYXBwbGljYXRpb24gdGhhdCB2aXN1YWxpemVzIHZpdGFtaW4gRCBzeW50aGVzaXMuIEVuZXJneSBmcm9tIHN1bmxpZ2h0IGNvbnRyaWJ1dGVzIHRvIG1lbnRhbCBoZWFsdGguCiAgICAtIGxpc3RpdGVtOgogICAgICAtIGhlYWRpbmcgIk9uZS1DbGljayBQcm9ncmVzcyBTaGFyaW5nIiBbbGV2ZWw9NV0KICAgICAgLSBwYXJhZ3JhcGg6IE9uZS1jbGljayBwcm9ncmVzcyBzaGFyaW5nIHRvb2wgdXNpbmcgV2ViU29ja2V0LiBDb250cmlidXRlcyB0byB0aGUgY3JlYXRpb24gb2YgYW4gaW50ZXJuYWwgZW52aXJvbm1lbnQgaW4gd2hpY2ggaXQgaXMgZWFzeSB0byBhc2sgcXVlc3Rpb25zLgogIC0gaGVhZGluZyAiTGV0J3MgQ29ubmVjdCIgW2xldmVsPTVdCiAgLSBwYXJhZ3JhcGg6IEknbSBjdXJyZW50bHkgbG9va2luZyBmb3IgbmV3IG9wcG9ydHVuaXRpZXMsIG15IGluYm94IGlzIGFsd2F5cyBvcGVuLiBXaGV0aGVyIHlvdSBoYXZlIGEgcXVlc3Rpb24gb3IganVzdCB3YW50IHRvIHNheSBoaSwgSSdsbCB0cnkgbXkgYmVzdCB0byBnZXQgYmFjayB0byB5b3UhCiAgLSBsaW5rICJHaXRodWIgSWNvbiI6CiAgICAtIGltZyAiR2l0aHViIEljb24iCiAgLSBsaW5rICJMaW5rZWRpbiBJY29uIjoKICAgIC0gaW1nICJMaW5rZWRpbiBJY29uIgogIC0gbGluayAiSW5zdGFncmFtIEljb24iOgogICAgLSBpbWcgIkluc3RhZ3JhbSBJY29uIgogIC0gbGluayAiWCBJY29uIjoKICAgIC0gaW1nICJYIEljb24iCiAgLSB0ZXh0OiBZb3VyIGVtYWlsCiAgLSB0ZXh0Ym94ICJZb3VyIGVtYWlsIgogIC0gdGV4dDogU3ViamVjdAogIC0gdGV4dGJveCAiU3ViamVjdCIKICAtIHRleHQ6IE1lc3NhZ2UKICAtIHRleHRib3ggIk1lc3NhZ2UiCiAgLSBidXR0b24gIlNlbmQgTWVzc2FnZSIKICAtIHRleHQ6IEtBWkEuT09PCiAgLSBwYXJhZ3JhcGg6IEFsbCByaWdodHMgcmVzZXJ2ZWQuCi0gYWxlcnQKYGBgCgojIFRlc3Qgc291cmNlCgpgYGB0cwogICAxIHwgaW1wb3J0IHsgdGVzdCwgZXhwZWN0IH0gZnJvbSAnQHBsYXl3cmlnaHQvdGVzdCc7CiAgIDIgfAogICAzIHwgdGVzdC5kZXNjcmliZSgnSG9tZXBhZ2UgUmVncmVzc2lvbiBUZXN0cycsICgpID0+IHsKICAgNCB8ICAgdGVzdC5iZWZvcmVFYWNoKGFzeW5jICh7IHBhZ2UgfSkgPT4gewogICA1IHwgICAgIGF3YWl0IHBhZ2UuZ290bygnLycpOwogICA2IHwgICB9KTsKICAgNyB8CiAgIDggfCAgIHRlc3QoJ3Nob3VsZCBkaXNwbGF5IG1haW4gbmF2aWdhdGlvbicsIGFzeW5jICh7IHBhZ2UgfSkgPT4gewogICA5IHwgICAgIGNvbnN0IG5hdiA9IHBhZ2UubG9jYXRvcignbmF2Jyk7CiAgMTAgfCAgICAgYXdhaXQgZXhwZWN0KG5hdikudG9CZVZpc2libGUoKTsKICAxMSB8ICAgfSk7CiAgMTIgfAogIDEzIHwgICB0ZXN0KCdzaG91bGQgaGF2ZSB3b3JraW5nIGxpbmtzJywgYXN5bmMgKHsgcGFnZSB9KSA9PiB7CiAgMTQgfCAgICAgY29uc3QgbGlua3MgPSBwYWdlLmxvY2F0b3IoJ2EnKTsKICAxNSB8ICAgICBjb25zdCBjb3VudCA9IGF3YWl0IGxpbmtzLmNvdW50KCk7CiAgMTYgfCAgICAgCiAgMTcgfCAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCBjb3VudDsgaSsrKSB7CiAgMTggfCAgICAgICBjb25zdCBsaW5rID0gbGlua3MubnRoKGkpOwogIDE5IHwgICAgICAgY29uc3QgaHJlZiA9IGF3YWl0IGxpbmsuZ2V0QXR0cmlidXRlKCdocmVmJyk7CiAgMjAgfCAgICAgICBpZiAoaHJlZiAmJiAhaHJlZi5zdGFydHNXaXRoKCcjJykpIHsKICAyMSB8ICAgICAgICAgYXdhaXQgZXhwZWN0KGxpbmspLm5vdC50b0hhdmVBdHRyaWJ1dGUoJ2hyZWYnLCAnJyk7CiAgMjIgfCAgICAgICB9CiAgMjMgfCAgICAgfQogIDI0IHwgICB9KTsKICAyNSB8CiAgMjYgfCAgIHRlc3QoJ3Nob3VsZCBiZSByZXNwb25zaXZlJywgYXN5bmMgKHsgcGFnZSB9KSA9PiB7CiAgMjcgfCAgICAgLy8gQ2hlY2sgbW9iaWxlIHZpZXcKICAyOCB8ICAgICBhd2FpdCBwYWdlLnNldFZpZXdwb3J0U2l6ZSh7IHdpZHRoOiAzNzUsIGhlaWdodDogNjY3IH0pOwogIDI5IHwgICAgIGNvbnN0IG1vYmlsZU5hdiA9IHBhZ2UubG9jYXRvcignLm1vYmlsZS1uYXYnKTsKPiAzMCB8ICAgICBhd2FpdCBleHBlY3QobW9iaWxlTmF2KS50b0JlVmlzaWJsZSgpOwogICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF4gRXJyb3I6IFRpbWVkIG91dCA1MDAwbXMgd2FpdGluZyBmb3IgZXhwZWN0KGxvY2F0b3IpLnRvQmVWaXNpYmxlKCkKICAzMSB8CiAgMzIgfCAgICAgLy8gQ2hlY2sgdGFibGV0IHZpZXcKICAzMyB8ICAgICBhd2FpdCBwYWdlLnNldFZpZXdwb3J0U2l6ZSh7IHdpZHRoOiA3NjgsIGhlaWdodDogMTAyNCB9KTsKICAzNCB8ICAgICBjb25zdCB0YWJsZXROYXYgPSBwYWdlLmxvY2F0b3IoJy50YWJsZXQtbmF2Jyk7CiAgMzUgfCAgICAgYXdhaXQgZXhwZWN0KHRhYmxldE5hdikudG9CZVZpc2libGUoKTsKICAzNiB8CiAgMzcgfCAgICAgLy8gQ2hlY2sgZGVza3RvcCB2aWV3CiAgMzggfCAgICAgYXdhaXQgcGFnZS5zZXRWaWV3cG9ydFNpemUoeyB3aWR0aDogMTQ0MCwgaGVpZ2h0OiA5MDAgfSk7CiAgMzkgfCAgICAgY29uc3QgZGVza3RvcE5hdiA9IHBhZ2UubG9jYXRvcignLmRlc2t0b3AtbmF2Jyk7CiAgNDAgfCAgICAgYXdhaXQgZXhwZWN0KGRlc2t0b3BOYXYpLnRvQmVWaXNpYmxlKCk7CiAgNDEgfCAgIH0pOwogIDQyIHwgfSk7IApgYGA="
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts",
+                        "column": 29,
+                        "line": 30
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0dd0e22fc76060868f45-4bd45505dac14ce53b8d",
+              "file": "regression/homepage.spec.ts",
+              "line": 26,
+              "column": 7
+            },
+            {
+              "title": "should display main navigation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 1549,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-04-06T22:12:29.004Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0dd0e22fc76060868f45-b175ffcb1da6a10491d9",
+              "file": "regression/homepage.spec.ts",
+              "line": 8,
+              "column": 7
+            },
+            {
+              "title": "should have working links",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1542,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-04-06T22:12:31.559Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0dd0e22fc76060868f45-1568f0c6f1e60746e4f1",
+              "file": "regression/homepage.spec.ts",
+              "line": 13,
+              "column": 7
+            },
+            {
+              "title": "should be responsive",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 6522,
+                      "error": {
+                        "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('.mobile-nav')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mobile-nav')\u001b[22m\n",
+                        "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('.mobile-nav')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mobile-nav')\u001b[22m\n\n    at /Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts:30:29",
+                        "matcherResult": {
+                          "message": "\u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('.mobile-nav')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mobile-nav')\u001b[22m\n",
+                          "pass": false,
+                          "actual": "<element(s) not found>",
+                          "name": "toBeVisible",
+                          "expected": "visible",
+                          "log": [
+                            "  - expect.toBeVisible with timeout 5000ms",
+                            "  - waiting for locator('.mobile-nav')"
+                          ],
+                          "timeout": 5000
+                        },
+                        "location": {
+                          "file": "/Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts",
+                          "column": 29,
+                          "line": 30
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetViewportSize({ width\u001b[33m:\u001b[39m \u001b[35m375\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m667\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mconst\u001b[39m mobileNav \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.mobile-nav'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m expect(mobileNav)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 31 |\u001b[39m\n \u001b[90m 32 |\u001b[39m     \u001b[90m// Check tablet view\u001b[39m\n \u001b[90m 33 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetViewportSize({ width\u001b[33m:\u001b[39m \u001b[35m768\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m1024\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts",
+                            "column": 29,
+                            "line": 30
+                          },
+                          "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('.mobile-nav')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mobile-nav')\u001b[22m\n\n\n\u001b[0m \u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetViewportSize({ width\u001b[33m:\u001b[39m \u001b[35m375\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m667\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mconst\u001b[39m mobileNav \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.mobile-nav'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m expect(mobileNav)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 31 |\u001b[39m\n \u001b[90m 32 |\u001b[39m     \u001b[90m// Check tablet view\u001b[39m\n \u001b[90m 33 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetViewportSize({ width\u001b[33m:\u001b[39m \u001b[35m768\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m1024\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts:30:29\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-04-06T22:12:31.610Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/xmile0134/Developer/this-is-me/test-results/regression-homepage-Homepa-d5eaa--Tests-should-be-responsive-firefox/test-failed-1.png"
+                        },
+                        {
+                          "name": "_prompt-0",
+                          "contentType": "text/markdown",
+                          "body": "IyBJbnN0cnVjdGlvbnMKCi0gRm9sbG93aW5nIFBsYXl3cmlnaHQgdGVzdCBmYWlsZWQuCi0gRXhwbGFpbiB3aHksIGJlIGNvbmNpc2UsIHJlc3BlY3QgUGxheXdyaWdodCBiZXN0IHByYWN0aWNlcy4KLSBQcm92aWRlIGEgc25pcHBldCBvZiBjb2RlIHdpdGggdGhlIGZpeCwgaWYgcG9zc2libGUuCgojIFRlc3QgaW5mbwoKLSBOYW1lOiBIb21lcGFnZSBSZWdyZXNzaW9uIFRlc3RzID4+IHNob3VsZCBiZSByZXNwb25zaXZlCi0gTG9jYXRpb246IC9Vc2Vycy94bWlsZTAxMzQvRGV2ZWxvcGVyL3RoaXMtaXMtbWUvdGVzdHMvcmVncmVzc2lvbi9ob21lcGFnZS5zcGVjLnRzOjI2OjcKCiMgRXJyb3IgZGV0YWlscwoKYGBgCkVycm9yOiBUaW1lZCBvdXQgNTAwMG1zIHdhaXRpbmcgZm9yIGV4cGVjdChsb2NhdG9yKS50b0JlVmlzaWJsZSgpCgpMb2NhdG9yOiBsb2NhdG9yKCcubW9iaWxlLW5hdicpCkV4cGVjdGVkOiB2aXNpYmxlClJlY2VpdmVkOiA8ZWxlbWVudChzKSBub3QgZm91bmQ+CkNhbGwgbG9nOgogIC0gZXhwZWN0LnRvQmVWaXNpYmxlIHdpdGggdGltZW91dCA1MDAwbXMKICAtIHdhaXRpbmcgZm9yIGxvY2F0b3IoJy5tb2JpbGUtbmF2JykKCiAgICBhdCAvVXNlcnMveG1pbGUwMTM0L0RldmVsb3Blci90aGlzLWlzLW1lL3Rlc3RzL3JlZ3Jlc3Npb24vaG9tZXBhZ2Uuc3BlYy50czozMDoyOQpgYGAKCiMgUGFnZSBzbmFwc2hvdAoKYGBgeWFtbAotIG1haW46CiAgLSBuYXZpZ2F0aW9uOgogICAgLSBsaW5rICJLQVpBLk9PTyIKICAgIC0gYnV0dG9uCiAgLSBoZWFkaW5nICJIZWxsbywgSSdtIEtva2l8IiBbbGV2ZWw9MV0KICAtIHBhcmFncmFwaDogSSBhbSBzdHVkeWluZyB0aGUgZGV2ZWxvcG1lbnQgb2YgSW9UIHByb3RvdHlwZXMgYW5kIG5ldHdvcmsgc2VjdXJpdHkgaW4gdW5pdmVyc2l0eS4gQWRkaXRpb25hbGx5LCBJIGFtIHdvcmtpbmcgb24gd2ViIGFwcGxpY2F0aW9uIGRldmVsb3BtZW50IGFzIGFuIGludGVybiB3ZWIgYXBwbGljYXRpb24gZW5naW5lZXIuCiAgLSBidXR0b24gIkNvbnRhY3QgTWUiCiAgLSBidXR0b24gIkRvd25sb2FkIENWIgogIC0gaW1nICLpoqjmipjmmYPovJ0iCiAgLSBoZWFkaW5nICJBYm91dCBNZSIgW2xldmVsPTJdCiAgLSBwYXJhZ3JhcGg6IEhpLCBJJ20gS29raSBLYXphb3JlLiBJJ20gb3JpZ2luYWxseSBmcm9tIFNoaWdhIGFuZCBJIGxpdmUgaW4gRnVrdWksIEphcGFuLiBJJ20gc3R5ZGluZyBJb1QgYW5kIG5ldHdvcmsgc2VyY3VyaXR5IHJlbGF0ZWQgdG8gSW9UIGF0IHRoZSBHcmFkdWF0ZSBTY2hvb2wgb2YgRW5naW5lZXJpbmcgLCBGdWt1aSBVbml2ZXJzaXR5LiBBZGRpdGlvbmFyeSwgSSdtIHdvcmtpbmcgYXMgYW4gaW50ZXJuIHdlYiBhcHBsaWNhdGlvbiBlbmdpbmVlciBhdCBhIFNhYVMgY29tcGFueSBpbiBPc2FrYS4gTXkgaG9iYmllcyBpbmNsdWRlIHdvcmtpbmcgb3V0IGFuZCB3YXRjaGluZyBzcG9ydHMuIEkgbGlrZSB2YXJpb3VzIGtpbmRzIG9mIHNwb3J0cywgYnV0IEknbSBlc3BlY2lhbGx5IGZvbmQgb2Ygc29jY2VyLCBiYXNlYmFsbCwgYW5kIEFtZXJpY2FuIGZvb3RiYWxsLiBJIHNwZW5kIG15IGRheXMgZmVlbGluZyBncmF0ZWZ1bCBmb3IgdGhlIG9wcG9ydHVuaXR5IHRvIHN0dWR5IHdoYXQgSSBsb3ZlIGFsbCBkYXkgbG9uZy4KICAtIGJ1dHRvbiAiU2tpbGxzIjoKICAgIC0gcGFyYWdyYXBoOiBTa2lsbHMKICAtIGJ1dHRvbiAiRWR1Y2F0aW9uIjoKICAgIC0gcGFyYWdyYXBoOiBFZHVjYXRpb24KICAtIGJ1dHRvbiAiQ2VydGlmaWNhdGlvbnMiOgogICAgLSBwYXJhZ3JhcGg6IENlcnRpZmljYXRpb25zCiAgLSBsaXN0OgogICAgLSBsaXN0aXRlbTogUHJvZ3JhbWluZyBMYW5ndWFnZSBDIC8gQysrIC8gUHl0aG9uIC8gUEhQIC8gSmF2YVNjcmlwdAogICAgLSBsaXN0aXRlbTogRnJhbWV3b3JrIC8gTGlicmFyeSBGbGFzayAvIExhcmF2ZWwgLyBOdW1weSAvIE5leHQuanMKICAgIC0gbGlzdGl0ZW06IERhdGFiYXNlIE15U1FMIC8gU1FMaXRlCiAgICAtIGxpc3RpdGVtOiBUb29scyBHaXQgLyBEb2NrZXIgLyBBenVyZQogIC0gaGVhZGluZyAiTXkgUHJvamVjdHMiIFtsZXZlbD0yXQogIC0gYnV0dG9uICJBbGwiCiAgLSBidXR0b24gIldlYiIKICAtIGJ1dHRvbiAiRWxzZSIKICAtIGxpc3Q6CiAgICAtIGxpc3RpdGVtOgogICAgICAtIGhlYWRpbmcgIlBGQyBCQUxBTkNFIiBbbGV2ZWw9NV0KICAgICAgLSBwYXJhZ3JhcGg6IEEgd2ViIGFwcGxpY2F0aW9uIHRoYXQgYWxsb3dzIHlvdSB0byBtYW5hZ2UgeW91ciBQRkMgYnkgc2ltcGx5IHRha2luZyBhIHBpY3R1cmUgb2YgdGhlIGZvb2QgeW91IGVhdC4KICAgIC0gbGlzdGl0ZW06CiAgICAgIC0gaGVhZGluZyAiRGVMaURldiIgW2xldmVsPTVdCiAgICAgIC0gcGFyYWdyYXBoOiBBIHBsYXRmb3JtIHRoYXQgZW5hYmxlcyBwYWNrYWdlIGRlbGl2ZXJ5IHNlcnZpY2UuIEl0IGNvbnRyaWJ1dGVzIHRvIHNvbHZpbmcgdGhlIHNob3J0YWdlIG9mIGxvZ2lzdGljcyBwZXJzb25uZWwuCiAgICAtIGxpc3RpdGVtOgogICAgICAtIGhlYWRpbmcgIkJvcnJvd2hvb2QiIFtsZXZlbD01XQogICAgICAtIHBhcmFncmFwaDogU2hhcmUgTW9yZSwgU3BlbmQgTGVzcywgQ29ubmVjdCBBbHdheXMuIFBvd2VyZWQgYnkgR29vZ2xlIFZpc2lvbiBBUEksIHJlY29tbWVuZGF0aW9ucywgYW5kIExsYW1hIEFJIHRvIHJlZHVjZSBvdmVyY29uc3VtcHRpb24gYW5kIGZvc3RlciBjb21tdW5pdHkgY29ubmVjdGlvbnMgdGhyb3VnaCBzaGFyZWQgaW50ZXJlc3RzLgogICAgLSBsaXN0aXRlbToKICAgICAgLSBoZWFkaW5nICJCaWtleWluZyBBUEkiIFtsZXZlbD01XQogICAgICAtIHBhcmFncmFwaDogQW4gSW9UIHByb2plY3QgYWltaW5nIHRvIG1ha2UgYmlrZSBzaGFyaW5nIEMtdG8tQy4gQ29udHJpYnV0ZXMgdG8gdGhlIHJldml0YWxpemF0aW9uIG9mIG1vYmlsaXR5LgogICAgLSBsaXN0aXRlbToKICAgICAgLSBoZWFkaW5nICJEYW5ubmVQb2ludC5jb20iIFtsZXZlbD01XQogICAgICAtIHBhcmFncmFwaDogQSB3ZWIgYXBwbGljYXRpb24gdGhhdCB2aXN1YWxpemVzIHZpdGFtaW4gRCBzeW50aGVzaXMuIEVuZXJneSBmcm9tIHN1bmxpZ2h0IGNvbnRyaWJ1dGVzIHRvIG1lbnRhbCBoZWFsdGguCiAgICAtIGxpc3RpdGVtOgogICAgICAtIGhlYWRpbmcgIk9uZS1DbGljayBQcm9ncmVzcyBTaGFyaW5nIiBbbGV2ZWw9NV0KICAgICAgLSBwYXJhZ3JhcGg6IE9uZS1jbGljayBwcm9ncmVzcyBzaGFyaW5nIHRvb2wgdXNpbmcgV2ViU29ja2V0LiBDb250cmlidXRlcyB0byB0aGUgY3JlYXRpb24gb2YgYW4gaW50ZXJuYWwgZW52aXJvbm1lbnQgaW4gd2hpY2ggaXQgaXMgZWFzeSB0byBhc2sgcXVlc3Rpb25zLgogIC0gaGVhZGluZyAiTGV0J3MgQ29ubmVjdCIgW2xldmVsPTVdCiAgLSBwYXJhZ3JhcGg6IEknbSBjdXJyZW50bHkgbG9va2luZyBmb3IgbmV3IG9wcG9ydHVuaXRpZXMsIG15IGluYm94IGlzIGFsd2F5cyBvcGVuLiBXaGV0aGVyIHlvdSBoYXZlIGEgcXVlc3Rpb24gb3IganVzdCB3YW50IHRvIHNheSBoaSwgSSdsbCB0cnkgbXkgYmVzdCB0byBnZXQgYmFjayB0byB5b3UhCiAgLSBsaW5rICJHaXRodWIgSWNvbiI6CiAgICAtIGltZyAiR2l0aHViIEljb24iCiAgLSBsaW5rICJMaW5rZWRpbiBJY29uIjoKICAgIC0gaW1nICJMaW5rZWRpbiBJY29uIgogIC0gbGluayAiSW5zdGFncmFtIEljb24iOgogICAgLSBpbWcgIkluc3RhZ3JhbSBJY29uIgogIC0gbGluayAiWCBJY29uIjoKICAgIC0gaW1nICJYIEljb24iCiAgLSB0ZXh0OiBZb3VyIGVtYWlsCiAgLSB0ZXh0Ym94ICJZb3VyIGVtYWlsIgogIC0gdGV4dDogU3ViamVjdAogIC0gdGV4dGJveCAiU3ViamVjdCIKICAtIHRleHQ6IE1lc3NhZ2UKICAtIHRleHRib3ggIk1lc3NhZ2UiCiAgLSBidXR0b24gIlNlbmQgTWVzc2FnZSIKICAtIHRleHQ6IEtBWkEuT09PCiAgLSBwYXJhZ3JhcGg6IEFsbCByaWdodHMgcmVzZXJ2ZWQuCi0gYWxlcnQKYGBgCgojIFRlc3Qgc291cmNlCgpgYGB0cwogICAxIHwgaW1wb3J0IHsgdGVzdCwgZXhwZWN0IH0gZnJvbSAnQHBsYXl3cmlnaHQvdGVzdCc7CiAgIDIgfAogICAzIHwgdGVzdC5kZXNjcmliZSgnSG9tZXBhZ2UgUmVncmVzc2lvbiBUZXN0cycsICgpID0+IHsKICAgNCB8ICAgdGVzdC5iZWZvcmVFYWNoKGFzeW5jICh7IHBhZ2UgfSkgPT4gewogICA1IHwgICAgIGF3YWl0IHBhZ2UuZ290bygnLycpOwogICA2IHwgICB9KTsKICAgNyB8CiAgIDggfCAgIHRlc3QoJ3Nob3VsZCBkaXNwbGF5IG1haW4gbmF2aWdhdGlvbicsIGFzeW5jICh7IHBhZ2UgfSkgPT4gewogICA5IHwgICAgIGNvbnN0IG5hdiA9IHBhZ2UubG9jYXRvcignbmF2Jyk7CiAgMTAgfCAgICAgYXdhaXQgZXhwZWN0KG5hdikudG9CZVZpc2libGUoKTsKICAxMSB8ICAgfSk7CiAgMTIgfAogIDEzIHwgICB0ZXN0KCdzaG91bGQgaGF2ZSB3b3JraW5nIGxpbmtzJywgYXN5bmMgKHsgcGFnZSB9KSA9PiB7CiAgMTQgfCAgICAgY29uc3QgbGlua3MgPSBwYWdlLmxvY2F0b3IoJ2EnKTsKICAxNSB8ICAgICBjb25zdCBjb3VudCA9IGF3YWl0IGxpbmtzLmNvdW50KCk7CiAgMTYgfCAgICAgCiAgMTcgfCAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCBjb3VudDsgaSsrKSB7CiAgMTggfCAgICAgICBjb25zdCBsaW5rID0gbGlua3MubnRoKGkpOwogIDE5IHwgICAgICAgY29uc3QgaHJlZiA9IGF3YWl0IGxpbmsuZ2V0QXR0cmlidXRlKCdocmVmJyk7CiAgMjAgfCAgICAgICBpZiAoaHJlZiAmJiAhaHJlZi5zdGFydHNXaXRoKCcjJykpIHsKICAyMSB8ICAgICAgICAgYXdhaXQgZXhwZWN0KGxpbmspLm5vdC50b0hhdmVBdHRyaWJ1dGUoJ2hyZWYnLCAnJyk7CiAgMjIgfCAgICAgICB9CiAgMjMgfCAgICAgfQogIDI0IHwgICB9KTsKICAyNSB8CiAgMjYgfCAgIHRlc3QoJ3Nob3VsZCBiZSByZXNwb25zaXZlJywgYXN5bmMgKHsgcGFnZSB9KSA9PiB7CiAgMjcgfCAgICAgLy8gQ2hlY2sgbW9iaWxlIHZpZXcKICAyOCB8ICAgICBhd2FpdCBwYWdlLnNldFZpZXdwb3J0U2l6ZSh7IHdpZHRoOiAzNzUsIGhlaWdodDogNjY3IH0pOwogIDI5IHwgICAgIGNvbnN0IG1vYmlsZU5hdiA9IHBhZ2UubG9jYXRvcignLm1vYmlsZS1uYXYnKTsKPiAzMCB8ICAgICBhd2FpdCBleHBlY3QobW9iaWxlTmF2KS50b0JlVmlzaWJsZSgpOwogICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF4gRXJyb3I6IFRpbWVkIG91dCA1MDAwbXMgd2FpdGluZyBmb3IgZXhwZWN0KGxvY2F0b3IpLnRvQmVWaXNpYmxlKCkKICAzMSB8CiAgMzIgfCAgICAgLy8gQ2hlY2sgdGFibGV0IHZpZXcKICAzMyB8ICAgICBhd2FpdCBwYWdlLnNldFZpZXdwb3J0U2l6ZSh7IHdpZHRoOiA3NjgsIGhlaWdodDogMTAyNCB9KTsKICAzNCB8ICAgICBjb25zdCB0YWJsZXROYXYgPSBwYWdlLmxvY2F0b3IoJy50YWJsZXQtbmF2Jyk7CiAgMzUgfCAgICAgYXdhaXQgZXhwZWN0KHRhYmxldE5hdikudG9CZVZpc2libGUoKTsKICAzNiB8CiAgMzcgfCAgICAgLy8gQ2hlY2sgZGVza3RvcCB2aWV3CiAgMzggfCAgICAgYXdhaXQgcGFnZS5zZXRWaWV3cG9ydFNpemUoeyB3aWR0aDogMTQ0MCwgaGVpZ2h0OiA5MDAgfSk7CiAgMzkgfCAgICAgY29uc3QgZGVza3RvcE5hdiA9IHBhZ2UubG9jYXRvcignLmRlc2t0b3AtbmF2Jyk7CiAgNDAgfCAgICAgYXdhaXQgZXhwZWN0KGRlc2t0b3BOYXYpLnRvQmVWaXNpYmxlKCk7CiAgNDEgfCAgIH0pOwogIDQyIHwgfSk7IApgYGA="
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts",
+                        "column": 29,
+                        "line": 30
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0dd0e22fc76060868f45-70de16f0da93640d153b",
+              "file": "regression/homepage.spec.ts",
+              "line": 26,
+              "column": 7
+            },
+            {
+              "title": "should display main navigation",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 3,
+                      "status": "passed",
+                      "duration": 2676,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-04-06T22:12:35.062Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0dd0e22fc76060868f45-bf608253382816693ffb",
+              "file": "regression/homepage.spec.ts",
+              "line": 8,
+              "column": 7
+            },
+            {
+              "title": "should have working links",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2823,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-04-06T22:12:35.667Z",
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "0dd0e22fc76060868f45-2c818da2609c75ac3a83",
+              "file": "regression/homepage.spec.ts",
+              "line": 13,
+              "column": 7
+            },
+            {
+              "title": "should be responsive",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "parallelIndex": 2,
+                      "status": "failed",
+                      "duration": 7626,
+                      "error": {
+                        "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('.mobile-nav')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mobile-nav')\u001b[22m\n",
+                        "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('.mobile-nav')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mobile-nav')\u001b[22m\n\n    at /Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts:30:29",
+                        "matcherResult": {
+                          "message": "\u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('.mobile-nav')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mobile-nav')\u001b[22m\n",
+                          "pass": false,
+                          "actual": "<element(s) not found>",
+                          "name": "toBeVisible",
+                          "expected": "visible",
+                          "log": [
+                            "  - expect.toBeVisible with timeout 5000ms",
+                            "  - waiting for locator('.mobile-nav')"
+                          ],
+                          "timeout": 5000
+                        },
+                        "location": {
+                          "file": "/Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts",
+                          "column": 29,
+                          "line": 30
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetViewportSize({ width\u001b[33m:\u001b[39m \u001b[35m375\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m667\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mconst\u001b[39m mobileNav \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.mobile-nav'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m expect(mobileNav)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 31 |\u001b[39m\n \u001b[90m 32 |\u001b[39m     \u001b[90m// Check tablet view\u001b[39m\n \u001b[90m 33 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetViewportSize({ width\u001b[33m:\u001b[39m \u001b[35m768\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m1024\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts",
+                            "column": 29,
+                            "line": 30
+                          },
+                          "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('.mobile-nav')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - expect.toBeVisible with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.mobile-nav')\u001b[22m\n\n\n\u001b[0m \u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetViewportSize({ width\u001b[33m:\u001b[39m \u001b[35m375\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m667\u001b[39m })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mconst\u001b[39m mobileNav \u001b[33m=\u001b[39m page\u001b[33m.\u001b[39mlocator(\u001b[32m'.mobile-nav'\u001b[39m)\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m expect(mobileNav)\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 31 |\u001b[39m\n \u001b[90m 32 |\u001b[39m     \u001b[90m// Check tablet view\u001b[39m\n \u001b[90m 33 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39msetViewportSize({ width\u001b[33m:\u001b[39m \u001b[35m768\u001b[39m\u001b[33m,\u001b[39m height\u001b[33m:\u001b[39m \u001b[35m1024\u001b[39m })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts:30:29\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-04-06T22:12:36.197Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/xmile0134/Developer/this-is-me/test-results/regression-homepage-Homepa-d5eaa--Tests-should-be-responsive-webkit/test-failed-1.png"
+                        },
+                        {
+                          "name": "_prompt-0",
+                          "contentType": "text/markdown",
+                          "body": "IyBJbnN0cnVjdGlvbnMKCi0gRm9sbG93aW5nIFBsYXl3cmlnaHQgdGVzdCBmYWlsZWQuCi0gRXhwbGFpbiB3aHksIGJlIGNvbmNpc2UsIHJlc3BlY3QgUGxheXdyaWdodCBiZXN0IHByYWN0aWNlcy4KLSBQcm92aWRlIGEgc25pcHBldCBvZiBjb2RlIHdpdGggdGhlIGZpeCwgaWYgcG9zc2libGUuCgojIFRlc3QgaW5mbwoKLSBOYW1lOiBIb21lcGFnZSBSZWdyZXNzaW9uIFRlc3RzID4+IHNob3VsZCBiZSByZXNwb25zaXZlCi0gTG9jYXRpb246IC9Vc2Vycy94bWlsZTAxMzQvRGV2ZWxvcGVyL3RoaXMtaXMtbWUvdGVzdHMvcmVncmVzc2lvbi9ob21lcGFnZS5zcGVjLnRzOjI2OjcKCiMgRXJyb3IgZGV0YWlscwoKYGBgCkVycm9yOiBUaW1lZCBvdXQgNTAwMG1zIHdhaXRpbmcgZm9yIGV4cGVjdChsb2NhdG9yKS50b0JlVmlzaWJsZSgpCgpMb2NhdG9yOiBsb2NhdG9yKCcubW9iaWxlLW5hdicpCkV4cGVjdGVkOiB2aXNpYmxlClJlY2VpdmVkOiA8ZWxlbWVudChzKSBub3QgZm91bmQ+CkNhbGwgbG9nOgogIC0gZXhwZWN0LnRvQmVWaXNpYmxlIHdpdGggdGltZW91dCA1MDAwbXMKICAtIHdhaXRpbmcgZm9yIGxvY2F0b3IoJy5tb2JpbGUtbmF2JykKCiAgICBhdCAvVXNlcnMveG1pbGUwMTM0L0RldmVsb3Blci90aGlzLWlzLW1lL3Rlc3RzL3JlZ3Jlc3Npb24vaG9tZXBhZ2Uuc3BlYy50czozMDoyOQpgYGAKCiMgUGFnZSBzbmFwc2hvdAoKYGBgeWFtbAotIG1haW46CiAgLSBuYXZpZ2F0aW9uOgogICAgLSBsaW5rICJLQVpBLk9PTyIKICAgIC0gYnV0dG9uCiAgLSBoZWFkaW5nICJIZWxsbywgSSdtIEtva2l8IiBbbGV2ZWw9MV0KICAtIHBhcmFncmFwaDogSSBhbSBzdHVkeWluZyB0aGUgZGV2ZWxvcG1lbnQgb2YgSW9UIHByb3RvdHlwZXMgYW5kIG5ldHdvcmsgc2VjdXJpdHkgaW4gdW5pdmVyc2l0eS4gQWRkaXRpb25hbGx5LCBJIGFtIHdvcmtpbmcgb24gd2ViIGFwcGxpY2F0aW9uIGRldmVsb3BtZW50IGFzIGFuIGludGVybiB3ZWIgYXBwbGljYXRpb24gZW5naW5lZXIuCiAgLSBidXR0b24gIkNvbnRhY3QgTWUiCiAgLSBidXR0b24gIkRvd25sb2FkIENWIgogIC0gaW1nICLpoqjmipjmmYPovJ0iCiAgLSBoZWFkaW5nICJBYm91dCBNZSIgW2xldmVsPTJdCiAgLSBwYXJhZ3JhcGg6IEhpLCBJJ20gS29raSBLYXphb3JlLiBJJ20gb3JpZ2luYWxseSBmcm9tIFNoaWdhIGFuZCBJIGxpdmUgaW4gRnVrdWksIEphcGFuLiBJJ20gc3R5ZGluZyBJb1QgYW5kIG5ldHdvcmsgc2VyY3VyaXR5IHJlbGF0ZWQgdG8gSW9UIGF0IHRoZSBHcmFkdWF0ZSBTY2hvb2wgb2YgRW5naW5lZXJpbmcgLCBGdWt1aSBVbml2ZXJzaXR5LiBBZGRpdGlvbmFyeSwgSSdtIHdvcmtpbmcgYXMgYW4gaW50ZXJuIHdlYiBhcHBsaWNhdGlvbiBlbmdpbmVlciBhdCBhIFNhYVMgY29tcGFueSBpbiBPc2FrYS4gTXkgaG9iYmllcyBpbmNsdWRlIHdvcmtpbmcgb3V0IGFuZCB3YXRjaGluZyBzcG9ydHMuIEkgbGlrZSB2YXJpb3VzIGtpbmRzIG9mIHNwb3J0cywgYnV0IEknbSBlc3BlY2lhbGx5IGZvbmQgb2Ygc29jY2VyLCBiYXNlYmFsbCwgYW5kIEFtZXJpY2FuIGZvb3RiYWxsLiBJIHNwZW5kIG15IGRheXMgZmVlbGluZyBncmF0ZWZ1bCBmb3IgdGhlIG9wcG9ydHVuaXR5IHRvIHN0dWR5IHdoYXQgSSBsb3ZlIGFsbCBkYXkgbG9uZy4KICAtIGJ1dHRvbiAiU2tpbGxzIjoKICAgIC0gcGFyYWdyYXBoOiBTa2lsbHMKICAtIGJ1dHRvbiAiRWR1Y2F0aW9uIjoKICAgIC0gcGFyYWdyYXBoOiBFZHVjYXRpb24KICAtIGJ1dHRvbiAiQ2VydGlmaWNhdGlvbnMiOgogICAgLSBwYXJhZ3JhcGg6IENlcnRpZmljYXRpb25zCiAgLSBsaXN0OgogICAgLSBsaXN0aXRlbTogUHJvZ3JhbWluZyBMYW5ndWFnZSBDIC8gQysrIC8gUHl0aG9uIC8gUEhQIC8gSmF2YVNjcmlwdAogICAgLSBsaXN0aXRlbTogRnJhbWV3b3JrIC8gTGlicmFyeSBGbGFzayAvIExhcmF2ZWwgLyBOdW1weSAvIE5leHQuanMKICAgIC0gbGlzdGl0ZW06IERhdGFiYXNlIE15U1FMIC8gU1FMaXRlCiAgICAtIGxpc3RpdGVtOiBUb29scyBHaXQgLyBEb2NrZXIgLyBBenVyZQogIC0gaGVhZGluZyAiTXkgUHJvamVjdHMiIFtsZXZlbD0yXQogIC0gYnV0dG9uICJBbGwiCiAgLSBidXR0b24gIldlYiIKICAtIGJ1dHRvbiAiRWxzZSIKICAtIGxpc3Q6CiAgICAtIGxpc3RpdGVtOgogICAgICAtIGhlYWRpbmcgIlBGQyBCQUxBTkNFIiBbbGV2ZWw9NV0KICAgICAgLSBwYXJhZ3JhcGg6IEEgd2ViIGFwcGxpY2F0aW9uIHRoYXQgYWxsb3dzIHlvdSB0byBtYW5hZ2UgeW91ciBQRkMgYnkgc2ltcGx5IHRha2luZyBhIHBpY3R1cmUgb2YgdGhlIGZvb2QgeW91IGVhdC4KICAgIC0gbGlzdGl0ZW06CiAgICAgIC0gaGVhZGluZyAiRGVMaURldiIgW2xldmVsPTVdCiAgICAgIC0gcGFyYWdyYXBoOiBBIHBsYXRmb3JtIHRoYXQgZW5hYmxlcyBwYWNrYWdlIGRlbGl2ZXJ5IHNlcnZpY2UuIEl0IGNvbnRyaWJ1dGVzIHRvIHNvbHZpbmcgdGhlIHNob3J0YWdlIG9mIGxvZ2lzdGljcyBwZXJzb25uZWwuCiAgICAtIGxpc3RpdGVtOgogICAgICAtIGhlYWRpbmcgIkJvcnJvd2hvb2QiIFtsZXZlbD01XQogICAgICAtIHBhcmFncmFwaDogU2hhcmUgTW9yZSwgU3BlbmQgTGVzcywgQ29ubmVjdCBBbHdheXMuIFBvd2VyZWQgYnkgR29vZ2xlIFZpc2lvbiBBUEksIHJlY29tbWVuZGF0aW9ucywgYW5kIExsYW1hIEFJIHRvIHJlZHVjZSBvdmVyY29uc3VtcHRpb24gYW5kIGZvc3RlciBjb21tdW5pdHkgY29ubmVjdGlvbnMgdGhyb3VnaCBzaGFyZWQgaW50ZXJlc3RzLgogICAgLSBsaXN0aXRlbToKICAgICAgLSBoZWFkaW5nICJCaWtleWluZyBBUEkiIFtsZXZlbD01XQogICAgICAtIHBhcmFncmFwaDogQW4gSW9UIHByb2plY3QgYWltaW5nIHRvIG1ha2UgYmlrZSBzaGFyaW5nIEMtdG8tQy4gQ29udHJpYnV0ZXMgdG8gdGhlIHJldml0YWxpemF0aW9uIG9mIG1vYmlsaXR5LgogICAgLSBsaXN0aXRlbToKICAgICAgLSBoZWFkaW5nICJEYW5ubmVQb2ludC5jb20iIFtsZXZlbD01XQogICAgICAtIHBhcmFncmFwaDogQSB3ZWIgYXBwbGljYXRpb24gdGhhdCB2aXN1YWxpemVzIHZpdGFtaW4gRCBzeW50aGVzaXMuIEVuZXJneSBmcm9tIHN1bmxpZ2h0IGNvbnRyaWJ1dGVzIHRvIG1lbnRhbCBoZWFsdGguCiAgICAtIGxpc3RpdGVtOgogICAgICAtIGhlYWRpbmcgIk9uZS1DbGljayBQcm9ncmVzcyBTaGFyaW5nIiBbbGV2ZWw9NV0KICAgICAgLSBwYXJhZ3JhcGg6IE9uZS1jbGljayBwcm9ncmVzcyBzaGFyaW5nIHRvb2wgdXNpbmcgV2ViU29ja2V0LiBDb250cmlidXRlcyB0byB0aGUgY3JlYXRpb24gb2YgYW4gaW50ZXJuYWwgZW52aXJvbm1lbnQgaW4gd2hpY2ggaXQgaXMgZWFzeSB0byBhc2sgcXVlc3Rpb25zLgogIC0gaGVhZGluZyAiTGV0J3MgQ29ubmVjdCIgW2xldmVsPTVdCiAgLSBwYXJhZ3JhcGg6IEknbSBjdXJyZW50bHkgbG9va2luZyBmb3IgbmV3IG9wcG9ydHVuaXRpZXMsIG15IGluYm94IGlzIGFsd2F5cyBvcGVuLiBXaGV0aGVyIHlvdSBoYXZlIGEgcXVlc3Rpb24gb3IganVzdCB3YW50IHRvIHNheSBoaSwgSSdsbCB0cnkgbXkgYmVzdCB0byBnZXQgYmFjayB0byB5b3UhCiAgLSBsaW5rICJHaXRodWIgSWNvbiI6CiAgICAtIGltZyAiR2l0aHViIEljb24iCiAgLSBsaW5rICJMaW5rZWRpbiBJY29uIjoKICAgIC0gaW1nICJMaW5rZWRpbiBJY29uIgogIC0gbGluayAiSW5zdGFncmFtIEljb24iOgogICAgLSBpbWcgIkluc3RhZ3JhbSBJY29uIgogIC0gbGluayAiWCBJY29uIjoKICAgIC0gaW1nICJYIEljb24iCiAgLSB0ZXh0OiBZb3VyIGVtYWlsCiAgLSB0ZXh0Ym94ICJZb3VyIGVtYWlsIgogIC0gdGV4dDogU3ViamVjdAogIC0gdGV4dGJveCAiU3ViamVjdCIKICAtIHRleHQ6IE1lc3NhZ2UKICAtIHRleHRib3ggIk1lc3NhZ2UiCiAgLSBidXR0b24gIlNlbmQgTWVzc2FnZSIKICAtIHRleHQ6IEtBWkEuT09PCiAgLSBwYXJhZ3JhcGg6IEFsbCByaWdodHMgcmVzZXJ2ZWQuCi0gYWxlcnQKYGBgCgojIFRlc3Qgc291cmNlCgpgYGB0cwogICAxIHwgaW1wb3J0IHsgdGVzdCwgZXhwZWN0IH0gZnJvbSAnQHBsYXl3cmlnaHQvdGVzdCc7CiAgIDIgfAogICAzIHwgdGVzdC5kZXNjcmliZSgnSG9tZXBhZ2UgUmVncmVzc2lvbiBUZXN0cycsICgpID0+IHsKICAgNCB8ICAgdGVzdC5iZWZvcmVFYWNoKGFzeW5jICh7IHBhZ2UgfSkgPT4gewogICA1IHwgICAgIGF3YWl0IHBhZ2UuZ290bygnLycpOwogICA2IHwgICB9KTsKICAgNyB8CiAgIDggfCAgIHRlc3QoJ3Nob3VsZCBkaXNwbGF5IG1haW4gbmF2aWdhdGlvbicsIGFzeW5jICh7IHBhZ2UgfSkgPT4gewogICA5IHwgICAgIGNvbnN0IG5hdiA9IHBhZ2UubG9jYXRvcignbmF2Jyk7CiAgMTAgfCAgICAgYXdhaXQgZXhwZWN0KG5hdikudG9CZVZpc2libGUoKTsKICAxMSB8ICAgfSk7CiAgMTIgfAogIDEzIHwgICB0ZXN0KCdzaG91bGQgaGF2ZSB3b3JraW5nIGxpbmtzJywgYXN5bmMgKHsgcGFnZSB9KSA9PiB7CiAgMTQgfCAgICAgY29uc3QgbGlua3MgPSBwYWdlLmxvY2F0b3IoJ2EnKTsKICAxNSB8ICAgICBjb25zdCBjb3VudCA9IGF3YWl0IGxpbmtzLmNvdW50KCk7CiAgMTYgfCAgICAgCiAgMTcgfCAgICAgZm9yIChsZXQgaSA9IDA7IGkgPCBjb3VudDsgaSsrKSB7CiAgMTggfCAgICAgICBjb25zdCBsaW5rID0gbGlua3MubnRoKGkpOwogIDE5IHwgICAgICAgY29uc3QgaHJlZiA9IGF3YWl0IGxpbmsuZ2V0QXR0cmlidXRlKCdocmVmJyk7CiAgMjAgfCAgICAgICBpZiAoaHJlZiAmJiAhaHJlZi5zdGFydHNXaXRoKCcjJykpIHsKICAyMSB8ICAgICAgICAgYXdhaXQgZXhwZWN0KGxpbmspLm5vdC50b0hhdmVBdHRyaWJ1dGUoJ2hyZWYnLCAnJyk7CiAgMjIgfCAgICAgICB9CiAgMjMgfCAgICAgfQogIDI0IHwgICB9KTsKICAyNSB8CiAgMjYgfCAgIHRlc3QoJ3Nob3VsZCBiZSByZXNwb25zaXZlJywgYXN5bmMgKHsgcGFnZSB9KSA9PiB7CiAgMjcgfCAgICAgLy8gQ2hlY2sgbW9iaWxlIHZpZXcKICAyOCB8ICAgICBhd2FpdCBwYWdlLnNldFZpZXdwb3J0U2l6ZSh7IHdpZHRoOiAzNzUsIGhlaWdodDogNjY3IH0pOwogIDI5IHwgICAgIGNvbnN0IG1vYmlsZU5hdiA9IHBhZ2UubG9jYXRvcignLm1vYmlsZS1uYXYnKTsKPiAzMCB8ICAgICBhd2FpdCBleHBlY3QobW9iaWxlTmF2KS50b0JlVmlzaWJsZSgpOwogICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF4gRXJyb3I6IFRpbWVkIG91dCA1MDAwbXMgd2FpdGluZyBmb3IgZXhwZWN0KGxvY2F0b3IpLnRvQmVWaXNpYmxlKCkKICAzMSB8CiAgMzIgfCAgICAgLy8gQ2hlY2sgdGFibGV0IHZpZXcKICAzMyB8ICAgICBhd2FpdCBwYWdlLnNldFZpZXdwb3J0U2l6ZSh7IHdpZHRoOiA3NjgsIGhlaWdodDogMTAyNCB9KTsKICAzNCB8ICAgICBjb25zdCB0YWJsZXROYXYgPSBwYWdlLmxvY2F0b3IoJy50YWJsZXQtbmF2Jyk7CiAgMzUgfCAgICAgYXdhaXQgZXhwZWN0KHRhYmxldE5hdikudG9CZVZpc2libGUoKTsKICAzNiB8CiAgMzcgfCAgICAgLy8gQ2hlY2sgZGVza3RvcCB2aWV3CiAgMzggfCAgICAgYXdhaXQgcGFnZS5zZXRWaWV3cG9ydFNpemUoeyB3aWR0aDogMTQ0MCwgaGVpZ2h0OiA5MDAgfSk7CiAgMzkgfCAgICAgY29uc3QgZGVza3RvcE5hdiA9IHBhZ2UubG9jYXRvcignLmRlc2t0b3AtbmF2Jyk7CiAgNDAgfCAgICAgYXdhaXQgZXhwZWN0KGRlc2t0b3BOYXYpLnRvQmVWaXNpYmxlKCk7CiAgNDEgfCAgIH0pOwogIDQyIHwgfSk7CmBgYA=="
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/xmile0134/Developer/this-is-me/tests/regression/homepage.spec.ts",
+                        "column": 29,
+                        "line": 30
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "0dd0e22fc76060868f45-1441b44a838d5325a8cc",
+              "file": "regression/homepage.spec.ts",
+              "line": 26,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-04-06T22:12:28.531Z",
+    "duration": 19659.990999999998,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,53 @@
+name: Regression Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - name: Install dependencies
+      run: npm ci
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps
+    - name: Install Vercel CLI
+      run: npm install -g vercel
+    - name: Get Vercel Preview URL
+      run: |
+        # Log in to Vercel
+        vercel login ${{ secrets.VERCEL_TOKEN }}
+
+        # Get Preview URL
+        PREVIEW_URL=$(vercel pull --yes --environment=preview | grep -o 'https://[^ ]*\.vercel\.app')
+        echo "Preview URL: $PREVIEW_URL"
+        echo "PREVIEW_URL=$PREVIEW_URL" >> $GITHUB_ENV
+    - name: Run Playwright tests
+      run: npx playwright test
+      env:
+        BASE_URL: ${{ env.PREVIEW_URL }}
+    - name: Upload test results
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: test-results/
+    - name: Sync with Zephyr
+      run: |
+        # Synchronize test results using Zephyr API
+        # Get Zephyr credentials from environment variables
+        ZEPHYR_API_KEY=${{ secrets.ZEPHYR_API_KEY }}
+        ZEPHYR_PROJECT_KEY=${{ secrets.ZEPHYR_PROJECT_KEY }}
+
+        # Convert test results to Zephyr format and upload
+        node scripts/sync-zephyr.js
+      env:
+        ZEPHYR_API_KEY: ${{ secrets.ZEPHYR_API_KEY }}
+        ZEPHYR_PROJECT_KEY: ${{ secrets.ZEPHYR_PROJECT_KEY }}
