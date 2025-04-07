@@ -31,19 +31,73 @@ async function uploadTestResults() {
 }
 
 function convertToZephyrFormat(testResults) {
-  return testResults.suites.map(suite => {
-    return {
-      testCaseKey: suite.title.split(':')[0].trim(),
-      status: suite.tests.every(test => test.status === 'passed') ? 'PASS' : 'FAIL',
-      executionTime: suite.tests.reduce((acc, test) => acc + test.duration, 0),
-      executedOn: new Date().toISOString(),
-      comment: suite.tests.map(test => `${test.title}: ${test.status}`).join('\n')
-    };
-  });
+  // テスト結果をZephyrフォーマットに変換
+  const results = [];
+
+  for (const suite of testResults.suites || []) {
+    // スイートのタイトルからテストケースキーを抽出
+    const testCaseKey = extractTestCaseKey(suite.title);
+    if (!testCaseKey) continue;
+
+    // スイート内のすべてのテストケースの結果を集約
+    const allTestResults = [];
+    processTestResults(suite, allTestResults);
+
+    // テスト実行結果を作成
+    if (allTestResults.length > 0) {
+      results.push({
+        testCaseKey: testCaseKey,
+        status: allTestResults.every(test => test.status === 'passed') ? 'PASS' : 'FAIL',
+        executionTime: allTestResults.reduce((acc, test) => acc + (test.duration || 0), 0),
+        executedOn: new Date().toISOString(),
+        comment: allTestResults.map(test => 
+          `${test.title}: ${test.status}${test.error ? '\nError: ' + test.error : ''}`
+        ).join('\n')
+      });
+    }
+  }
+
+  return results;
+}
+
+function processTestResults(suite, results) {
+  // スペックの処理
+  if (suite.specs) {
+    for (const spec of suite.specs) {
+      for (const test of spec.tests || []) {
+        results.push({
+          title: spec.title,
+          status: test.results?.[0]?.status || 'failed',
+          duration: test.results?.[0]?.duration || 0,
+          error: test.results?.[0]?.error?.message
+        });
+      }
+    }
+  }
+
+  // 子スイートの処理
+  if (suite.suites) {
+    for (const childSuite of suite.suites) {
+      processTestResults(childSuite, results);
+    }
+  }
+}
+
+function extractTestCaseKey(title) {
+  // タイトルからテストケースキーを抽出 (例: "SCRUM-T1: テストタイトル" → "SCRUM-T1")
+  const match = title.match(/^([A-Z]+-[A-Z0-9]+):/);
+  return match ? match[1] : null;
 }
 
 async function uploadToZephyr(results) {
-  const response = await fetch('https://api.zephyrscale.smartbear.com/v2/testexecutions', {
+  if (results.length === 0) {
+    console.log('No test results to upload');
+    return;
+  }
+
+  console.log('Uploading test results to Zephyr:', JSON.stringify(results, null, 2));
+
+  const response = await fetch(`${ZEPHYR_API_BASE_URL}/testexecutions`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${ZEPHYR_API_KEY}`,
@@ -56,7 +110,8 @@ async function uploadToZephyr(results) {
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to upload to Zephyr: ${response.statusText}`);
+    const errorText = await response.text();
+    throw new Error(`Failed to upload to Zephyr: ${response.status} ${response.statusText}\n${errorText}`);
   }
 }
 
