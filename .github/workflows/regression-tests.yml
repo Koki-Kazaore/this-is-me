@@ -28,6 +28,16 @@ jobs:
       env:
         BASE_URL: ${{ secrets.BASE_URL }}
 
+    - name: Debug test results
+      if: always()
+      run: |
+        if [ -f "test-results.json" ]; then
+          echo "Test results file exists"
+          cat test-results.json
+        else
+          echo "No test results file found"
+        fi
+
     - name: Upload test results to Zephyr
       if: always()
       run: |
