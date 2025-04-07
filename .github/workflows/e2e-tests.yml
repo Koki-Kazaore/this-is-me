@@ -1,4 +1,4 @@
-name: Regression Tests
+name: E2E Tests with Playwright MCP
 
 on:
   push:
@@ -15,7 +15,7 @@ on:
         type: boolean
 
 jobs:
-  regression-test:
+  test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -42,14 +42,20 @@ jobs:
     - name: Install Playwright
       run: npx playwright install --with-deps
 
-    - name: Run regression tests
+    - name: Configure Playwright MCP
+      run: |
+        # Playwright MCP Settings
+        echo '{"reporter": ["list", ["html"], ["json", { "outputFile": "test-results.json" }]]}' > playwright.config.ts
+
+    - name: Run tests on Playwright MCP
       run: |
         npx playwright test --workers=4 \
           --project=chromium \
           --project=firefox \
-          --project=webkit \
-          --reporter=json
+          --project=webkit
       env:
+        PLAYWRIGHT_SERVICE_ACCESS_TOKEN: ${{ secrets.PLAYWRIGHT_SERVICE_ACCESS_TOKEN }}
+        PLAYWRIGHT_SERVICE_URL: ${{ secrets.PLAYWRIGHT_SERVICE_URL }}
         BASE_URL: ${{ env.PREVIEW_URL }}
 
     - name: Upload test results to Zephyr
@@ -69,8 +75,8 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v4
       with:
-        name: regression-test-results
+        name: test-results
         path: |
-          test-results.json
+          test-results/
           playwright-report/
         retention-days: 30
