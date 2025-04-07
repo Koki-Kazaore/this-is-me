@@ -21,12 +21,62 @@ async function uploadTestResults() {
     const testResults = JSON.parse(fs.readFileSync(TEST_RESULTS_PATH, 'utf8'));
     const zephyrResults = convertToZephyrFormat(testResults);
 
-    // Zephyrへのアップロード
-    await uploadToZephyr(zephyrResults);
+    // テストサイクルの作成
+    const cycleId = await createTestCycle();
+    console.log(`Created test cycle: ${cycleId}`);
+
+    // テストサイクルにテストケースを追加
+    await addTestCasesToCycle(cycleId, zephyrResults);
+
+    // テスト実行結果のアップロード
+    await uploadToZephyr(cycleId, zephyrResults);
     console.log('Test results uploaded to Zephyr successfully');
   } catch (error) {
     console.error('Error uploading test results to Zephyr:', error);
     process.exit(1);
+  }
+}
+
+async function createTestCycle() {
+  const response = await fetch(`${ZEPHYR_API_BASE_URL}/testcycles`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${ZEPHYR_API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      projectKey: ZEPHYR_PROJECT_KEY,
+      name: `Regression Test - ${new Date().toISOString()}`,
+      description: 'Automated regression test execution'
+    })
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Failed to create test cycle: ${response.status} ${response.statusText}\n${errorText}`);
+  }
+
+  const data = await response.json();
+  return data.id;
+}
+
+async function addTestCasesToCycle(cycleId, testResults) {
+  const testCaseKeys = testResults.map(result => result.testCaseKey);
+  
+  const response = await fetch(`${ZEPHYR_API_BASE_URL}/testcycles/${cycleId}/testcases`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${ZEPHYR_API_KEY}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      testCaseKeys: testCaseKeys
+    })
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Failed to add test cases to cycle: ${response.status} ${response.statusText}\n${errorText}`);
   }
 }
 
@@ -89,7 +139,7 @@ function extractTestCaseKey(title) {
   return match ? match[1] : null;
 }
 
-async function uploadToZephyr(results) {
+async function uploadToZephyr(cycleId, results) {
   if (results.length === 0) {
     console.log('No test results to upload');
     return;
@@ -97,7 +147,7 @@ async function uploadToZephyr(results) {
 
   console.log('Uploading test results to Zephyr:', JSON.stringify(results, null, 2));
 
-  const response = await fetch(`${ZEPHYR_API_BASE_URL}/testexecutions`, {
+  const response = await fetch(`${ZEPHYR_API_BASE_URL}/testcycles/${cycleId}/testexecutions`, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${ZEPHYR_API_KEY}`,
