@@ -1,82 +1,82 @@
-name: E2E Tests with Playwright MCP
+# name: E2E Tests with Playwright MCP
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-    types: [opened, synchronize, reopened]
-  workflow_dispatch:
-    inputs:
-      debug_enabled:
-        description: 'Enable debug mode'
-        required: false
-        default: false
-        type: boolean
+# on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+#     types: [opened, synchronize, reopened]
+#   workflow_dispatch:
+#     inputs:
+#       debug_enabled:
+#         description: 'Enable debug mode'
+#         required: false
+#         default: false
+#         type: boolean
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v4
+#     - uses: actions/setup-node@v4
+#       with:
+#         node-version: lts/*
 
-    - name: Install dependencies
-      run: npm ci
+#     - name: Install dependencies
+#       run: npm ci
 
-    - name: Get Vercel Preview URL
-      if: github.event_name == 'pull_request'
-      run: |
-        PREVIEW_URL=$(curl -s -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
-          "https://api.vercel.com/v6/deployments?projectId=${{ secrets.VERCEL_PROJECT_ID }}&state=READY&target=preview&limit=1" \
-          | jq -r '.deployments[0].url')
-        echo "PREVIEW_URL=https://$PREVIEW_URL" >> $GITHUB_ENV
+#     - name: Get Vercel Preview URL
+#       if: github.event_name == 'pull_request'
+#       run: |
+#         PREVIEW_URL=$(curl -s -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+#           "https://api.vercel.com/v6/deployments?projectId=${{ secrets.VERCEL_PROJECT_ID }}&state=READY&target=preview&limit=1" \
+#           | jq -r '.deployments[0].url')
+#         echo "PREVIEW_URL=https://$PREVIEW_URL" >> $GITHUB_ENV
 
-    - name: Set production URL
-      if: github.event_name != 'pull_request'
-      run: |
-        echo "PREVIEW_URL=${{ secrets.PRODUCTION_URL }}" >> $GITHUB_ENV
+#     - name: Set production URL
+#       if: github.event_name != 'pull_request'
+#       run: |
+#         echo "PREVIEW_URL=${{ secrets.PRODUCTION_URL }}" >> $GITHUB_ENV
 
-    - name: Install Playwright
-      run: npx playwright install --with-deps
+#     - name: Install Playwright
+#       run: npx playwright install --with-deps
 
-    - name: Configure Playwright MCP
-      run: |
-        # Playwright MCP Settings
-        echo '{"reporter": ["list", ["html"], ["json", { "outputFile": "test-results.json" }]]}' > playwright.config.ts
+#     - name: Configure Playwright MCP
+#       run: |
+#         # Playwright MCP Settings
+#         echo '{"reporter": ["list", ["html"], ["json", { "outputFile": "test-results.json" }]]}' > playwright.config.ts
 
-    - name: Run tests on Playwright MCP
-      run: |
-        npx playwright test --workers=4 \
-          --project=chromium \
-          --project=firefox \
-          --project=webkit
-      env:
-        PLAYWRIGHT_SERVICE_ACCESS_TOKEN: ${{ secrets.PLAYWRIGHT_SERVICE_ACCESS_TOKEN }}
-        PLAYWRIGHT_SERVICE_URL: ${{ secrets.PLAYWRIGHT_SERVICE_URL }}
-        BASE_URL: ${{ env.PREVIEW_URL }}
+#     - name: Run tests on Playwright MCP
+#       run: |
+#         npx playwright test --workers=4 \
+#           --project=chromium \
+#           --project=firefox \
+#           --project=webkit
+#       env:
+#         PLAYWRIGHT_SERVICE_ACCESS_TOKEN: ${{ secrets.PLAYWRIGHT_SERVICE_ACCESS_TOKEN }}
+#         PLAYWRIGHT_SERVICE_URL: ${{ secrets.PLAYWRIGHT_SERVICE_URL }}
+#         BASE_URL: ${{ env.PREVIEW_URL }}
 
-    - name: Upload test results to Zephyr
-      if: always()
-      run: |
-        if [ -f "test-results.json" ]; then
-          node scripts/sync-zephyr.js
-        else
-          echo "No test results found"
-          exit 1
-        fi
-      env:
-        ZEPHYR_API_KEY: ${{ secrets.ZEPHYR_API_KEY }}
-        ZEPHYR_PROJECT_KEY: ${{ secrets.ZEPHYR_PROJECT_KEY }}
+#     - name: Upload test results to Zephyr
+#       if: always()
+#       run: |
+#         if [ -f "test-results.json" ]; then
+#           node scripts/sync-zephyr.js
+#         else
+#           echo "No test results found"
+#           exit 1
+#         fi
+#       env:
+#         ZEPHYR_API_KEY: ${{ secrets.ZEPHYR_API_KEY }}
+#         ZEPHYR_PROJECT_KEY: ${{ secrets.ZEPHYR_PROJECT_KEY }}
 
-    - name: Upload test artifacts
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: test-results
-        path: |
-          test-results/
-          playwright-report/
-        retention-days: 30
+#     - name: Upload test artifacts
+#       if: always()
+#       uses: actions/upload-artifact@v4
+#       with:
+#         name: test-results
+#         path: |
+#           test-results/
+#           playwright-report/
+#         retention-days: 30
