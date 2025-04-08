@@ -58,7 +58,7 @@ function convertToZephyrFormat(testResults) {
         for (const childSuite of suite.suites) {
           console.log('Processing child suite:', childSuite.title);
           
-          // テストケースキーの抽出
+          // テストケースキーの抽出と変換
           const testCaseKey = extractTestCaseKey(childSuite.title);
           console.log('Extracted test case key:', testCaseKey);
           
@@ -67,6 +67,10 @@ function convertToZephyrFormat(testResults) {
             continue;
           }
 
+          // テストケースキーを正しい形式に変換
+          const convertedTestCaseKey = convertTestCaseKey(testCaseKey);
+          console.log('Converted test case key:', convertedTestCaseKey);
+
           // テスト結果の集約
           if (childSuite.specs && childSuite.specs.length > 0) {
             const spec = childSuite.specs[0];
@@ -74,7 +78,7 @@ function convertToZephyrFormat(testResults) {
             const result = test.results[0];
 
             results.push({
-              testCaseKey: testCaseKey,
+              testCaseKey: convertedTestCaseKey,
               status: result.status === 'passed' ? 'PASS' : 'FAIL',
               executionTime: result.duration || 0,
               executedOn: new Date().toISOString(),
@@ -90,13 +94,21 @@ function convertToZephyrFormat(testResults) {
 }
 
 function extractTestCaseKey(title) {
-  // タイトルからテストケースキーを抽出 (例: "SCRUM-T1: テストタイトル" → "SCRUM-T1")
-  const match = title.match(/^([A-Z]+-[A-Z0-9]+):/);
+  // タイトルからテストケースキーを抽出 (例: "***-T1: テストタイトル" → "***-T1")
+  const match = title.match(/^([A-Z*]+-[A-Z0-9]+):/);
   if (!match) {
     console.log('No test case key found in title:', title);
     return null;
   }
   return match[1];
+}
+
+function convertTestCaseKey(key) {
+  // テストケースキーを正しい形式に変換 (例: "***-T1" → "SCRUM-T1")
+  if (key.startsWith('***-')) {
+    return key.replace('***-', `${ZEPHYR_PROJECT_KEY}-`);
+  }
+  return key;
 }
 
 async function createTestCycle() {
