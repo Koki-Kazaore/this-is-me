@@ -19,7 +19,15 @@ async function uploadTestResults() {
     }
 
     const testResults = JSON.parse(fs.readFileSync(TEST_RESULTS_PATH, 'utf8'));
+    console.log('Raw test results:', JSON.stringify(testResults, null, 2));
+
     const zephyrResults = convertToZephyrFormat(testResults);
+    console.log('Converted Zephyr results:', JSON.stringify(zephyrResults, null, 2));
+
+    if (zephyrResults.length === 0) {
+      console.log('No test results to upload after conversion');
+      return;
+    }
 
     // テストサイクルの作成
     const cycleId = await createTestCycle();
@@ -62,6 +70,7 @@ async function createTestCycle() {
 
 async function addTestCasesToCycle(cycleId, testResults) {
   const testCaseKeys = testResults.map(result => result.testCaseKey);
+  console.log('Adding test cases to cycle:', testCaseKeys);
   
   const response = await fetch(`${ZEPHYR_API_BASE_URL}/testcycles/${cycleId}/testcases`, {
     method: 'POST',
@@ -78,22 +87,27 @@ async function addTestCasesToCycle(cycleId, testResults) {
     const errorText = await response.text();
     throw new Error(`Failed to add test cases to cycle: ${response.status} ${response.statusText}\n${errorText}`);
   }
+
+  console.log('Successfully added test cases to cycle');
 }
 
 function convertToZephyrFormat(testResults) {
-  // テスト結果をZephyrフォーマットに変換
   const results = [];
-
+  
   for (const suite of testResults.suites || []) {
-    // スイートのタイトルからテストケースキーを抽出
+    console.log('Processing suite:', suite.title);
     const testCaseKey = extractTestCaseKey(suite.title);
-    if (!testCaseKey) continue;
+    console.log('Extracted test case key:', testCaseKey);
+    
+    if (!testCaseKey) {
+      console.log('No test case key found in suite title');
+      continue;
+    }
 
-    // スイート内のすべてのテストケースの結果を集約
     const allTestResults = [];
     processTestResults(suite, allTestResults);
+    console.log('Processed test results:', allTestResults);
 
-    // テスト実行結果を作成
     if (allTestResults.length > 0) {
       results.push({
         testCaseKey: testCaseKey,
@@ -111,9 +125,9 @@ function convertToZephyrFormat(testResults) {
 }
 
 function processTestResults(suite, results) {
-  // スペックの処理
   if (suite.specs) {
     for (const spec of suite.specs) {
+      console.log('Processing spec:', spec.title);
       for (const test of spec.tests || []) {
         results.push({
           title: spec.title,
@@ -125,7 +139,6 @@ function processTestResults(suite, results) {
     }
   }
 
-  // 子スイートの処理
   if (suite.suites) {
     for (const childSuite of suite.suites) {
       processTestResults(childSuite, results);
@@ -134,7 +147,6 @@ function processTestResults(suite, results) {
 }
 
 function extractTestCaseKey(title) {
-  // タイトルからテストケースキーを抽出 (例: "SCRUM-T1: テストタイトル" → "SCRUM-T1")
   const match = title.match(/^([A-Z]+-[A-Z0-9]+):/);
   return match ? match[1] : null;
 }
