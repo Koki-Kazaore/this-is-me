@@ -19,7 +19,7 @@ async function uploadTestResults() {
     }
 
     const testResults = JSON.parse(fs.readFileSync(TEST_RESULTS_PATH, 'utf8'));
-    console.log('Raw test results:', JSON.stringify(testResults, null, 2));
+    console.log('Raw test results structure:', JSON.stringify(testResults, null, 2));
 
     const zephyrResults = convertToZephyrFormat(testResults);
     console.log('Converted Zephyr results:', JSON.stringify(zephyrResults, null, 2));
@@ -43,6 +43,49 @@ async function uploadTestResults() {
     console.error('Error uploading test results to Zephyr:', error);
     process.exit(1);
   }
+}
+
+function convertToZephyrFormat(testResults) {
+  const results = [];
+  
+  // PlaywrightのJSONレポーターの出力形式に合わせて処理
+  if (testResults.suites) {
+    for (const suite of testResults.suites) {
+      console.log('Processing suite:', suite.title);
+      
+      // テストケースキーの抽出
+      const testCaseKey = extractTestCaseKey(suite.title);
+      console.log('Extracted test case key:', testCaseKey);
+      
+      if (!testCaseKey) {
+        console.log('No test case key found in suite title');
+        continue;
+      }
+
+      // テスト結果の集約
+      const testStatus = suite.tests.every(test => test.status === 'passed') ? 'PASS' : 'FAIL';
+      const executionTime = suite.tests.reduce((acc, test) => acc + (test.duration || 0), 0);
+      const comment = suite.tests.map(test => 
+        `${test.title}: ${test.status}${test.error ? '\nError: ' + test.error : ''}`
+      ).join('\n');
+
+      results.push({
+        testCaseKey: testCaseKey,
+        status: testStatus,
+        executionTime: executionTime,
+        executedOn: new Date().toISOString(),
+        comment: comment
+      });
+    }
+  }
+
+  return results;
+}
+
+function extractTestCaseKey(title) {
+  // タイトルからテストケースキーを抽出 (例: "SCRUM-T1: テストタイトル" → "SCRUM-T1")
+  const match = title.match(/^([A-Z]+-[A-Z0-9]+):/);
+  return match ? match[1] : null;
 }
 
 async function createTestCycle() {
@@ -89,66 +132,6 @@ async function addTestCasesToCycle(cycleId, testResults) {
   }
 
   console.log('Successfully added test cases to cycle');
-}
-
-function convertToZephyrFormat(testResults) {
-  const results = [];
-  
-  for (const suite of testResults.suites || []) {
-    console.log('Processing suite:', suite.title);
-    const testCaseKey = extractTestCaseKey(suite.title);
-    console.log('Extracted test case key:', testCaseKey);
-    
-    if (!testCaseKey) {
-      console.log('No test case key found in suite title');
-      continue;
-    }
-
-    const allTestResults = [];
-    processTestResults(suite, allTestResults);
-    console.log('Processed test results:', allTestResults);
-
-    if (allTestResults.length > 0) {
-      results.push({
-        testCaseKey: testCaseKey,
-        status: allTestResults.every(test => test.status === 'passed') ? 'PASS' : 'FAIL',
-        executionTime: allTestResults.reduce((acc, test) => acc + (test.duration || 0), 0),
-        executedOn: new Date().toISOString(),
-        comment: allTestResults.map(test => 
-          `${test.title}: ${test.status}${test.error ? '\nError: ' + test.error : ''}`
-        ).join('\n')
-      });
-    }
-  }
-
-  return results;
-}
-
-function processTestResults(suite, results) {
-  if (suite.specs) {
-    for (const spec of suite.specs) {
-      console.log('Processing spec:', spec.title);
-      for (const test of spec.tests || []) {
-        results.push({
-          title: spec.title,
-          status: test.results?.[0]?.status || 'failed',
-          duration: test.results?.[0]?.duration || 0,
-          error: test.results?.[0]?.error?.message
-        });
-      }
-    }
-  }
-
-  if (suite.suites) {
-    for (const childSuite of suite.suites) {
-      processTestResults(childSuite, results);
-    }
-  }
-}
-
-function extractTestCaseKey(title) {
-  const match = title.match(/^([A-Z]+-[A-Z0-9]+):/);
-  return match ? match[1] : null;
 }
 
 async function uploadToZephyr(cycleId, results) {
