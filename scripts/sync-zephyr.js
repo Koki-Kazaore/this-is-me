@@ -5,6 +5,7 @@ const fetch = require('node-fetch');
 // Zephyr API Settings
 const ZEPHYR_API_KEY = process.env.ZEPHYR_API_KEY;
 const ZEPHYR_PROJECT_KEY = process.env.ZEPHYR_PROJECT_KEY;
+const ZEPHYR_TEST_CYCLE_ID = process.env.ZEPHYR_TEST_CYCLE_ID;
 const ZEPHYR_API_BASE_URL = 'https://api.zephyrscale.smartbear.com/v2';
 
 // Test results file path
@@ -29,12 +30,23 @@ async function uploadTestResults() {
       return;
     }
 
-    // テストサイクルの作成
-    const cycleId = await createTestCycle();
-    console.log(`Created test cycle: ${cycleId}`);
+    // テストサイクルの取得または作成
+    let cycleId;
+    if (ZEPHYR_TEST_CYCLE_ID) {
+      console.log(`Using existing test cycle: ${ZEPHYR_TEST_CYCLE_ID}`);
+      cycleId = ZEPHYR_TEST_CYCLE_ID;
+    } else {
+      console.log('Creating new test cycle...');
+      cycleId = await createTestCycle();
+      console.log(`Created test cycle: ${cycleId}`);
+    }
 
+    // テストケースの存在確認と追加
+    const testCaseKeys = zephyrResults.map(result => result.testCaseKey);
+    console.log('Checking test cases:', testCaseKeys);
+    
     // テストサイクルにテストケースを追加
-    await addTestCasesToCycle(cycleId, zephyrResults);
+    await addTestCasesToCycle(cycleId, testCaseKeys);
 
     // テスト実行結果のアップロード
     await uploadToZephyr(cycleId, zephyrResults);
@@ -134,27 +146,47 @@ async function createTestCycle() {
   return data.id;
 }
 
-async function addTestCasesToCycle(cycleId, testResults) {
-  const testCaseKeys = testResults.map(result => result.testCaseKey);
+async function addTestCasesToCycle(cycleId, testCaseKeys) {
   console.log('Adding test cases to cycle:', testCaseKeys);
   
-  const response = await fetch(`${ZEPHYR_API_BASE_URL}/testcycles/${cycleId}/testcases`, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${ZEPHYR_API_KEY}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      testCaseKeys: testCaseKeys
-    })
-  });
+  // テストケースの存在確認
+  for (const testCaseKey of testCaseKeys) {
+    try {
+      const response = await fetch(`${ZEPHYR_API_BASE_URL}/testcases/${testCaseKey}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': `Bearer ${ZEPHYR_API_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      });
 
-  if (!response.ok) {
-    const errorText = await response.text();
-    throw new Error(`Failed to add test cases to cycle: ${response.status} ${response.statusText}\n${errorText}`);
+      if (!response.ok) {
+        console.error(`Test case ${testCaseKey} not found in Zephyr`);
+        continue;
+      }
+
+      // テストケースをテストサイクルに追加
+      const addResponse = await fetch(`${ZEPHYR_API_BASE_URL}/testcycles/${cycleId}/testcases`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${ZEPHYR_API_KEY}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          testCaseKeys: [testCaseKey]
+        })
+      });
+
+      if (!addResponse.ok) {
+        const errorText = await addResponse.text();
+        console.error(`Failed to add test case ${testCaseKey} to cycle: ${errorText}`);
+      } else {
+        console.log(`Successfully added test case ${testCaseKey} to cycle`);
+      }
+    } catch (error) {
+      console.error(`Error processing test case ${testCaseKey}:`, error);
+    }
   }
-
-  console.log('Successfully added test cases to cycle');
 }
 
 async function uploadToZephyr(cycleId, results) {
