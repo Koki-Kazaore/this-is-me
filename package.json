@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "test:e2e": "playwright test --config=playwright.config.ts",
+    "test:e2e:ui": "playwright test --config=playwright.config.ts --ui",
+    "test:e2e:debug": "playwright test --config=playwright.config.ts --debug"
   },
   "dependencies": {
     "@babel/preset-env": "^7.26.9",
@@ -16,6 +19,7 @@
     "@tailwindcss/typography": "^0.5.15",
     "@vercel/analytics": "^1.2.0",
     "@vercel/speed-insights": "^1.0.10",
+    "axios": "^1.6.7",
     "bail": "^2.0.2",
     "devlop": "^1.1.0",
     "framer-motion": "^11.0.5",
@@ -44,6 +48,7 @@
   "devDependencies": {
     "@babel/core": "^7.26.9",
     "@babel/preset-react": "^7.26.3",
+    "@playwright/test": "^1.42.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
