@@ -48,34 +48,41 @@ async function uploadTestResults() {
 function convertToZephyrFormat(testResults) {
   const results = [];
   
-  // PlaywrightのJSONレポーターの出力形式に合わせて処理
+  // テスト結果の構造を処理
   if (testResults.suites) {
     for (const suite of testResults.suites) {
       console.log('Processing suite:', suite.title);
       
-      // テストケースキーの抽出
-      const testCaseKey = extractTestCaseKey(suite.title);
-      console.log('Extracted test case key:', testCaseKey);
-      
-      if (!testCaseKey) {
-        console.log('No test case key found in suite title');
-        continue;
+      // 子スイートを処理
+      if (suite.suites) {
+        for (const childSuite of suite.suites) {
+          console.log('Processing child suite:', childSuite.title);
+          
+          // テストケースキーの抽出
+          const testCaseKey = extractTestCaseKey(childSuite.title);
+          console.log('Extracted test case key:', testCaseKey);
+          
+          if (!testCaseKey) {
+            console.log('No test case key found in suite title');
+            continue;
+          }
+
+          // テスト結果の集約
+          if (childSuite.specs && childSuite.specs.length > 0) {
+            const spec = childSuite.specs[0];
+            const test = spec.tests[0];
+            const result = test.results[0];
+
+            results.push({
+              testCaseKey: testCaseKey,
+              status: result.status === 'passed' ? 'PASS' : 'FAIL',
+              executionTime: result.duration || 0,
+              executedOn: new Date().toISOString(),
+              comment: result.error ? result.error.message : 'Test completed successfully'
+            });
+          }
+        }
       }
-
-      // テスト結果の集約
-      const testStatus = suite.tests.every(test => test.status === 'passed') ? 'PASS' : 'FAIL';
-      const executionTime = suite.tests.reduce((acc, test) => acc + (test.duration || 0), 0);
-      const comment = suite.tests.map(test => 
-        `${test.title}: ${test.status}${test.error ? '\nError: ' + test.error : ''}`
-      ).join('\n');
-
-      results.push({
-        testCaseKey: testCaseKey,
-        status: testStatus,
-        executionTime: executionTime,
-        executedOn: new Date().toISOString(),
-        comment: comment
-      });
     }
   }
 
@@ -85,7 +92,11 @@ function convertToZephyrFormat(testResults) {
 function extractTestCaseKey(title) {
   // タイトルからテストケースキーを抽出 (例: "SCRUM-T1: テストタイトル" → "SCRUM-T1")
   const match = title.match(/^([A-Z]+-[A-Z0-9]+):/);
-  return match ? match[1] : null;
+  if (!match) {
+    console.log('No test case key found in title:', title);
+    return null;
+  }
+  return match[1];
 }
 
 async function createTestCycle() {
