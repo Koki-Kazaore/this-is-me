@@ -29,6 +29,8 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
           JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
           JIRA_PROJECT_KEY: ${{ secrets.JIRA_PROJECT_KEY }}
+          JIRA_USER: ${{ secrets.JIRA_USER }}
+          ZEPHYR_FOLDER_ID: ${{ secrets.ZEPHYR_FOLDER_ID }}
         continue-on-error: true
 
       - name: Update Jira test results
@@ -38,6 +40,8 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
           JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
           JIRA_PROJECT_KEY: ${{ secrets.JIRA_PROJECT_KEY }}
+          JIRA_USER: ${{ secrets.JIRA_USER }}
+          ZEPHYR_FOLDER_ID: ${{ secrets.ZEPHYR_FOLDER_ID }}
 
       - name: Upload test results
         if: always()
