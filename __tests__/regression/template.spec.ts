@@ -32,12 +32,11 @@ const testCaseTemplate = (testCase: TestCase) => {
 
 // 使用例
 const exampleTestCase: TestCase = {
-  id: 'TEST-001',
-  title: 'Example Test Case',
+  id: 'SCRUM-T4',
+  title: 'トップページのタイトルタイトル確認',
   steps: [
-    'Navigate to homepage',
-    'Click login button',
-    'Enter credentials'
+    'トップページにアクセスする',
+    'タイトルが表示されていることを確認する',
   ],
   expected: 'kaza.ooo'
 };
