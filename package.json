@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "test:unit": "jest",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:all": "jest && npx playwright test"
   },
   "dependencies": {
     "@babel/preset-env": "^7.26.9",
@@ -44,6 +48,7 @@
   "devDependencies": {
     "@babel/core": "^7.26.9",
     "@babel/preset-react": "^7.26.3",
+    "@playwright/test": "^1.51.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
