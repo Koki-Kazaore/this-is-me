@@ -1,0 +1,60 @@
+name: Regression Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    types: [opened, synchronize, reopened]
+
+jobs:
+  regression-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Install Playwright
+      run: npx playwright install --with-deps
+
+    - name: Run regression tests
+      run: |
+        npx playwright test --reporter=json
+      env:
+        BASE_URL: ${{ secrets.BASE_URL }}
+
+    - name: Debug test results
+      if: always()
+      run: |
+        if [ -f "test-results.json" ]; then
+          echo "Test results file exists"
+          cat test-results.json
+        else
+          echo "No test results file found"
+        fi
+
+    - name: Upload test results to Zephyr
+      if: always()
+      run: |
+        if [ -f "test-results.json" ]; then
+          node scripts/sync-zephyr.js
+        else
+          echo "No test results found"
+          exit 1
+        fi
+      env:
+        ZEPHYR_API_KEY: ${{ secrets.ZEPHYR_API_KEY }}
+        ZEPHYR_PROJECT_KEY: ${{ secrets.ZEPHYR_PROJECT_KEY }}
+
+    - name: Upload test artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: regression-test-results
+        path: test-results.json
+        retention-days: 30
