@@ -1,5 +1,11 @@
 import type { Config } from 'tailwindcss'
-const colors = require('tailwindcss/colors');
+import {
+  sky as lightBlue,
+  stone as warmGray,
+  neutral as trueGray,
+  gray as coolGray,
+  slate as blueGray,
+} from 'tailwindcss/colors'
 
 const config: Config = {
   content: [
@@ -53,9 +59,13 @@ const config: Config = {
       },
     },
     colors: {
-      ...colors,
-      primary: colors.green,
-      secondary: colors.yellow,
+      primary: lightBlue,
+      secondary: warmGray,
+      sky: lightBlue,
+      stone: warmGray,
+      neutral: trueGray,
+      gray: coolGray,
+      slate: blueGray,
     },
   },
   plugins: [
