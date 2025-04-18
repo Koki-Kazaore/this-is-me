@@ -25,14 +25,24 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-Run tests:
+Run Jest tests:
 
 ```bash
 npm run test
 # or
+npm run test:unit
+# or
 yarn test
 # or
 pnpm test
+```
+
+Run Playwright tests:
+
+```bash
+npm run test:e2e
+# If you want to execute with ui mode
+npm run test:e2e:ui
 ```
 
 ## Learn More
