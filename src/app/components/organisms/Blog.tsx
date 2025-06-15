@@ -6,6 +6,11 @@ import Article from '../molecules/Article'
 // Definition of article data
 const articles = [
   {
+    id: 6,
+    title: 'Understanding Rails MVC Architecture - From Abstract Concepts to Hanshin Tigers',
+    abstract: 'This article explains the MVC (Model-View-Controller) pattern. And then to promote understanding, I apply MVC architecture to the Hanshin Tigers baseball team, demonstrating how concepts work together.'
+  },
+  {
     id: 5,
     title: 'Dissecting Consolidated Commits with Interactive Rebase',
     abstract: 'This article explains how to locate and inspect original commits hidden behind interactive rebase consolidations.'
