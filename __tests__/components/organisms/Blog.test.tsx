@@ -41,11 +41,16 @@ describe('Blog Component', () => {
   it('renders the correct number of articles', () => {
     render(<Blog />);
     const articles = screen.getAllByTestId('article-mock');
-    expect(articles).toHaveLength(5);
+    expect(articles).toHaveLength(6);
   });
 
   it('passes correct props to Article components', () => {
     render(<Blog />);
+
+    // Check sixth article (id: 6)
+    const sixthArticle = screen.getByText('Understanding Rails MVC Architecture - From Abstract Concepts to Hanshin Tigers');
+    expect(sixthArticle).toBeInTheDocument();
+    expect(sixthArticle.closest('[data-testid="article-mock"]')).toHaveAttribute('data-id', '6');
 
     // Check first article (id: 5)
     const firstArticle = screen.getByText('Dissecting Consolidated Commits with Interactive Rebase');
@@ -77,6 +82,7 @@ describe('Blog Component', () => {
     render(<Blog />);
 
     // Check abstracts are rendered
+    expect(screen.getByText('This article explains the MVC (Model-View-Controller) pattern. And then to promote understanding, I apply MVC architecture to the Hanshin Tigers baseball team, demonstrating how concepts work together.')).toBeInTheDocument();
     expect(screen.getByText('This article explains how to locate and inspect original commits hidden behind interactive rebase consolidations.')).toBeInTheDocument();
     expect(screen.getByText('This is a summary of my first international hackathon experience.')).toBeInTheDocument();
     expect(screen.getByText('This article introduces the fundamentals of Same-Origin Policy (SOP) and Cross-Origin Resource Sharing (CORS), detailing their configuration and verification using FastAPI and Postman.')).toBeInTheDocument();

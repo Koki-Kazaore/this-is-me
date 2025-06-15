@@ -13,6 +13,14 @@ jest.mock('framer-motion', () => ({
   },
 }));
 
+// Mock Next.js Image component to handle priority prop correctly
+jest.mock('next/image', () => ({
+  __esModule: true,
+  default: ({ priority, ...props }: any) => (
+    <img {...props} data-priority={priority} />
+  ),
+}));
+
 jest.mock('react-type-animation', () => ({
   TypeAnimation: ({ sequence, wrapper, speed, repeat }: any) => (
     <span>
