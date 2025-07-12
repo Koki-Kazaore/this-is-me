@@ -34,7 +34,7 @@ const MermaidRenderer: React.FC<MermaidRendererProps> = ({ chart }) => {
       })
 
       // Generate unique ID for each diagram
-      const graphId = `mermaid-${Math.random().toString(36).substr(2, 9)}`
+      const graphId = `mermaid-${Math.random().toString(36).slice(2, 11)}`
 
       // Clear the element and render the diagram
       elementRef.current.innerHTML = ''
