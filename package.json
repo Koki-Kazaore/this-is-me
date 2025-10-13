@@ -28,7 +28,7 @@
     "mdast-util-from-markdown": "^2.0.2",
     "mermaid": "^11.6.0",
     "micromark": "^4.0.2",
-    "next": "^14.0.4",
+    "next": "^14.2.33",
     "next-axiom": "^1.2.0",
     "next-transpile-modules": "^10.0.1",
     "react": "^18",
