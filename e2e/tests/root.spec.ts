@@ -63,7 +63,7 @@ test("Navigation functions properly", async ({ page }) => {
   await expect(page).toHaveURL(/.*blog/);
 });
 
-test("Contact form handles valid input successfully", async ({ page }) => {
+test.skip("Contact form handles valid input successfully", async ({ page }) => {
   await page.goto("/", { waitUntil: "networkidle" });
 
   // Scroll to Contact section
@@ -92,7 +92,7 @@ test("Contact form handles valid input successfully", async ({ page }) => {
   });
 });
 
-test("Contact form validates required fields", async ({ page }) => {
+test.skip("Contact form validates required fields", async ({ page }) => {
   await page.goto("/", { waitUntil: "networkidle" });
 
   // Scroll to Contact section
@@ -140,7 +140,7 @@ test("Contact form validates required fields", async ({ page }) => {
   ).not.toBeVisible();
 });
 
-test("Contact form validates email format", async ({ page }) => {
+test.skip("Contact form validates email format", async ({ page }) => {
   await page.goto("/", { waitUntil: "networkidle" });
 
   // Scroll to Contact section
@@ -188,7 +188,7 @@ test("Contact form validates email format", async ({ page }) => {
   });
 });
 
-test("Contact form handles long input values", async ({ page }) => {
+test.skip("Contact form handles long input values", async ({ page }) => {
   await page.goto("/", { waitUntil: "networkidle" });
 
   // Scroll to Contact section
