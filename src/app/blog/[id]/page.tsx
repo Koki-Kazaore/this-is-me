@@ -1,9 +1,6 @@
 import Navbar from "../../components/organisms/Navbar";
 import Footer from "../../components/Footer";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import Image from "next/image";
-import MermaidRenderer from "../../components/MermaidRenderer";
+import ArticleContent from "../../components/ArticleContent";
 import { getArticle, listArticleIds } from "@/lib/articles";
 
 type Props = {
@@ -27,42 +24,7 @@ const BlogDetail = async ({ params }: Props) => {
           <p className="text-gray-400">{article.date}</p>
           <h1 className="text-4xl font-semibold text-white">{article.title}</h1>
           <div className="prose prose-invert mt-4 max-w-none">
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                img: ({ node, ...props }) => (
-                  <Image
-                    src={props.src || ""}
-                    alt={props.alt || ""}
-                    width={800}
-                    height={600}
-                    style={{ width: "100%", height: "auto" }}
-                  />
-                ),
-                code: (props) => {
-                  const { children, className, node, ...rest } = props;
-                  const match = /language-(\w+)/.exec(className || "");
-                  const language = match ? match[1] : "";
-
-                  // Check if this is a mermaid code block (not inline)
-                  if (language === "mermaid") {
-                    return (
-                      <MermaidRenderer
-                        chart={String(children).replace(/\n$/, "")}
-                      />
-                    );
-                  }
-
-                  return (
-                    <code className={className} {...rest}>
-                      {children}
-                    </code>
-                  );
-                },
-              }}
-            >
-              {article.content}
-            </ReactMarkdown>
+            <ArticleContent content={article.content} />
           </div>
         </div>
       </div>
