@@ -9,7 +9,7 @@ const Blog: FC = () => {
   return (
     <main className="flex flex-col min-h-screen bg-[rgb(18,18,18)]">
       <Navbar />
-      <div className="flex-grow sm:container mt-24 mx-auto px-12 py-4">
+      <div className="flex-grow sm:container mt-24 mx-auto px-4 sm:px-12 py-4">
         {articles.map((article) => (
           <Article
             key={article.id}

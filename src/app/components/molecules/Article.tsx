@@ -4,8 +4,8 @@ import Link from 'next/link'
 const Article: FC<{ id: number, title: string; abstract: string }> = ({ id, title, abstract }) => (
   <Link href={`/blog/${id}`}>
     <article className='text-white rounded-xl mt-3 bg-[#23272f] py-6 px-4'>
-      <h2 className='text-2xl font-semibold mb-2'>{title}</h2>
-      <p>{abstract}</p>
+      <h2 className='text-xl sm:text-2xl font-semibold mb-2 break-words'>{title}</h2>
+      <p className='break-words'>{abstract}</p>
     </article>
   </Link>
 )
