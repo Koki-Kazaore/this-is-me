@@ -43,4 +43,14 @@ describe('ArticleContent', () => {
     expect(code?.textContent).toContain('const a=1;')
     expect(container.querySelector('.mermaid-diagram')).not.toBeInTheDocument()
   })
+
+  it('renders a non-mermaid fenced code block inside a <pre> with overflow-x-auto', () => {
+    const content = '```js\nconst x = 1;\n```'
+
+    const { container } = render(<ArticleContent content={content} />)
+
+    const pre = container.querySelector('pre')
+    expect(pre).toBeInTheDocument()
+    expect(pre).toHaveClass('overflow-x-auto')
+  })
 })
