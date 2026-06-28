@@ -41,6 +41,17 @@ const ArticleContent = ({ content }: ArticleContentProps) => {
             </code>
           );
         },
+        pre: ({ node, className, ...props }) => (
+          <pre
+            className={["w-full max-w-full overflow-x-auto", className].filter(Boolean).join(" ")}
+            {...props}
+          />
+        ),
+        table: ({ node, ...props }) => (
+          <div className="w-full max-w-full overflow-x-auto">
+            <table {...props} />
+          </div>
+        ),
       }}
     >
       {content}
