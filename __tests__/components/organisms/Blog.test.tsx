@@ -163,6 +163,8 @@ describe('Blog Component', () => {
     expect(mainElement).toHaveClass('flex-col')
     expect(mainElement).toHaveClass('min-h-screen')
     expect(mainElement).toHaveClass('bg-[rgb(18,18,18)]')
+    expect(mainElement).toHaveClass('w-full')
+    expect(mainElement).toHaveClass('min-w-0')
 
     // Check for article container
     const articleContainer = container.querySelector('div.flex-grow')
@@ -172,5 +174,8 @@ describe('Blog Component', () => {
     expect(articleContainer).toHaveClass('px-4')
     expect(articleContainer).toHaveClass('sm:px-12')
     expect(articleContainer).toHaveClass('py-4')
+    expect(articleContainer).toHaveClass('w-full')
+    expect(articleContainer).toHaveClass('min-w-0')
+    expect(articleContainer).toHaveClass('max-w-full')
   })
 })

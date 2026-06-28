@@ -7,9 +7,9 @@ import { listArticles } from '@/lib/articles'
 const Blog: FC = () => {
   const articles = listArticles()
   return (
-    <main className="flex flex-col min-h-screen bg-[rgb(18,18,18)]">
+    <main className="flex w-full min-w-0 flex-col min-h-screen bg-[rgb(18,18,18)]">
       <Navbar />
-      <div className="flex-grow sm:container mt-24 mx-auto px-4 sm:px-12 py-4">
+      <div className="flex-grow w-full min-w-0 max-w-full sm:container mt-24 mx-auto px-4 sm:px-12 py-4">
         {articles.map((article) => (
           <Article
             key={article.id}
