@@ -11,19 +11,15 @@ test("Homepage displays correctly", async ({ page }) => {
   const heroSection = page.locator("section").first();
   await expect(heroSection).toBeVisible({ timeout: 10000 });
 
-  // Wait for heading to be attached to DOM and any initial animations
-  const headerText = page
-    .getByRole("heading", { level: 1 })
-    .getByText("Hello, I'm", { exact: false });
-
-  // More reliable than waiting for visibility
+  // Static editorial heading
+  const headerText = page.getByRole("heading", { level: 1 });
   await expect(headerText).toBeVisible({ timeout: 10000 });
-  await expect(headerText).toHaveText("Hello, I'm ", { timeout: 10000 });
+  await expect(headerText).toHaveText("Koki Kazaore", { timeout: 10000 });
 
-  // Wait for the animated text to appear
-  await expect(heroSection.locator(".index-module_type__E-SaG")).toBeVisible({
-    timeout: 10000,
-  });
+  // Role line under the heading
+  await expect(
+    heroSection.getByText("Backend Engineer — Tokyo, JP")
+  ).toBeVisible({ timeout: 10000 });
 });
 
 test("Navigation functions properly", async ({ page }) => {
@@ -41,10 +37,9 @@ test("Navigation functions properly", async ({ page }) => {
 
   // Wait for heading with more reliable selector
   const aboutHeading = page.getByRole("heading", {
-    name: "About Me",
+    name: "About",
     level: 2,
   });
-  await expect(aboutHeading).toBeVisible({ timeout: 10000 });
   await expect(aboutHeading).toBeVisible({ timeout: 10000 });
 
   // Scroll to Projects section and wait for animation
@@ -52,7 +47,7 @@ test("Navigation functions properly", async ({ page }) => {
   const projectsSection = page.locator("#projects");
   await expect(projectsSection).toBeVisible({ timeout: 10000 });
   await expect(
-    projectsSection.getByRole("heading", { name: "My Projects" })
+    projectsSection.getByRole("heading", { name: "Projects" })
   ).toBeVisible({ timeout: 10000 });
 
   // Wait for animation to complete

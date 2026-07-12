@@ -1,5 +1,6 @@
 import type { Config } from 'tailwindcss'
 const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 const config: Config = {
   content: [
@@ -9,13 +10,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
       screens: {
         'xs': '324px', // Samsung Galaxy Fold
+      },
+      fontFamily: {
+        sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+        mono: ['var(--font-mono)', ...defaultTheme.fontFamily.mono],
       },
       typography: {
         invert: {
@@ -30,8 +30,8 @@ const config: Config = {
                 left: 0,
                 bottom: 0,
                 width: '100%',
-                height: '2px',
-                backgroundColor: 'currentColor',
+                height: '1px',
+                backgroundColor: 'var(--color-hairline)',
               },
             },
             h2: {
@@ -44,8 +44,8 @@ const config: Config = {
                 left: 0,
                 bottom: 0,
                 width: '100%',
-                height: '2px',
-                backgroundColor: 'currentColor',
+                height: '1px',
+                backgroundColor: 'var(--color-hairline)',
               },
             },
           },
@@ -54,6 +54,15 @@ const config: Config = {
     },
     colors: {
       ...colors,
+      // Semantic design tokens — values live in src/app/globals.css (:root)
+      bg: 'var(--color-bg)',
+      fg: {
+        DEFAULT: 'var(--color-fg)',
+        muted: 'var(--color-fg-muted)',
+        subtle: 'var(--color-fg-subtle)',
+      },
+      hairline: 'var(--color-hairline)',
+      // Legacy aliases — remove once every component is migrated to tokens
       primary: colors.green,
       secondary: colors.yellow,
     },

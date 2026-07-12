@@ -7,9 +7,9 @@ import Footer from './components/Footer'
 
 export default function Home() {
   return (
-    <main className='flex min-h-screen min-w-min flex-col bg-[rgb(18,18,18)]'>
+    <main className='flex min-h-screen flex-col'>
       <Navbar />
-      <div className='sm:container mt-24 mx-auto px-12 py-4'>
+      <div className='mx-auto w-full max-w-3xl flex-grow px-6 pt-24'>
         <HeroSection />
         <AboutSection />
         <ProjectsSection />

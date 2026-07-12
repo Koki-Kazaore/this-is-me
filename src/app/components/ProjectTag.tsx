@@ -9,11 +9,11 @@ interface ProjectTagProps {
 
 const ProjectTag: React.FC<ProjectTagProps> = ({ name, onClick, isSelected }) => {
     const buttonStyles = isSelected
-    ? 'text-white border-primary-500'
-    : 'text-[#ADB7BE] border-slate-600 hover:border-white'
+    ? 'text-fg border-fg'
+    : 'text-fg-subtle border-transparent hover:text-fg-muted'
     return (
-        <button 
-            className={`${buttonStyles} rounded-full border-2 px-6 py-3 text-xl cursor-pointer`}
+        <button
+            className={`${buttonStyles} border-b pb-1 font-mono text-sm transition-colors`}
             onClick={() => onClick(name)}
         >
             {name}
