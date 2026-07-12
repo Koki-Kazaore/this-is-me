@@ -1,8 +1,7 @@
 'use client'
-import React, { useTransition, useState, ReactNode, useEffect} from 'react'
+import React, { useTransition, useState, ReactNode } from 'react'
 import Image from 'next/image'
 import TabButton from './TabButton'
-import {motion} from 'framer-motion'
 
 interface TabDataItem {
     title: string;
@@ -15,18 +14,22 @@ const TAB_DATA: TabDataItem[] = [
         title: 'Skills',
         id: 'skills',
         content: (
-            <ul className='list-disc pl-2'>
-                <li className='pb-2'>Programing Language<br />
-                    C / C++ / Python / PHP / JavaScript
+            <ul className='space-y-4 text-sm'>
+                <li>
+                    <span className='text-fg'>Programming Language</span><br />
+                    <span className='text-fg-muted'>C / C++ / Python / PHP / JavaScript</span>
                 </li>
-                <li className='pb-2'>Framework / Library<br />
-                    Flask / Laravel / Numpy / Next.js
+                <li>
+                    <span className='text-fg'>Framework / Library</span><br />
+                    <span className='text-fg-muted'>Flask / Laravel / Numpy / Next.js</span>
                 </li>
-                <li className='pb-2'>Database<br />
-                    MySQL / SQLite
+                <li>
+                    <span className='text-fg'>Database</span><br />
+                    <span className='text-fg-muted'>MySQL / SQLite</span>
                 </li>
-                <li className='pb-2'>Tools<br />
-                    Git / Docker / Azure
+                <li>
+                    <span className='text-fg'>Tools</span><br />
+                    <span className='text-fg-muted'>Git / Docker / Azure</span>
                 </li>
             </ul>
         )
@@ -35,9 +38,10 @@ const TAB_DATA: TabDataItem[] = [
         title: 'Education',
         id: 'education',
         content: (
-            <ul className='list-disc pl-2'>
-                <li className='pb-2'>Fukui University<br />
-                    Master of Engineering
+            <ul className='space-y-4 text-sm'>
+                <li>
+                    <span className='text-fg'>Fukui University</span><br />
+                    <span className='text-fg-muted'>Master of Engineering</span>
                 </li>
             </ul>
         )
@@ -46,8 +50,10 @@ const TAB_DATA: TabDataItem[] = [
         title: 'Certifications',
         id: 'certifications',
         content: (
-            <ul className='list-disc pl-2'>
-                <li>AZ-900 : Azure Fandamentals</li>
+            <ul className='space-y-4 text-sm'>
+                <li>
+                    <span className='text-fg-muted'>AZ-900 : Azure Fandamentals</span>
+                </li>
             </ul>
         )
     },
@@ -55,8 +61,7 @@ const TAB_DATA: TabDataItem[] = [
 
 const AboutSection: React.FC = () => {
     const [tab, setTab] = useState<string>('skills');
-    const [isPending, startTransition] = useTransition();
-    const [isMobile, setIsMobile] = useState(false);
+    const [, startTransition] = useTransition();
 
     const handleTabChange = (id: string) => {
         startTransition(() => {
@@ -64,41 +69,19 @@ const AboutSection: React.FC = () => {
         });
     }
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-
-        // Called once during initialization as well.
-        handleResize();
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
     return (
-        <section id='about' className='text-white'>
-            <motion.div 
-                initial={{ opacity: 0, scale: 0 }} 
-                animate={{ opacity: 1, scale: 1 }} 
-                transition={{ duration: 0.5 }}  
-                className='md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16'
-            >
-                {isMobile ? null : (
-                    <Image 
-                        src='/images/about-image.png'
-                        alt='About me section image'
-                        width={500} 
-                        height={500}
-                        className='rounded-t-xl'
-                    />
-                )}
-                <div className='mt-4 md:mt-0 text-left flex flex-col h-full'>
-                    <h2 className='text-4xl font-bold text-white mb-4'>About Me</h2>
-                    <p className='text-base lg:text-lg'>
+        <section id='about' className='border-t border-hairline py-16 sm:py-20'>
+            <h2 className='font-mono text-xs uppercase tracking-[0.2em] text-fg-subtle'>About</h2>
+            <div className='mt-10 gap-12 md:grid md:grid-cols-5'>
+                <Image
+                    src='/images/about-image.png'
+                    alt='About me section image'
+                    width={500}
+                    height={500}
+                    className='hidden self-start rounded-lg md:col-span-2 md:block'
+                />
+                <div className='md:col-span-3'>
+                    <p className='text-base leading-relaxed text-fg-muted'>
                         Hi, I&apos;m Koki Kazaore. I&apos;m originally from Shiga and I live in Fukui, Japan. I&apos;m styding IoT and network sercurity related to IoT at the Graduate School of Engineering , Fukui University.<br />
                         Additionary, I&apos;m working as an intern web application engineer at a SaaS company in Osaka.<br />
                         <br />
@@ -106,34 +89,34 @@ const AboutSection: React.FC = () => {
                         <br />
                         I spend my days feeling grateful for the opportunity to study what I love all day long.
                     </p>
-                    <div className='flex flex-row justify-start mt-8'>
-                        <TabButton 
-                            selectTab={() => handleTabChange('skills')} 
+                    <div className='mt-10 flex flex-row gap-6'>
+                        <TabButton
+                            selectTab={() => handleTabChange('skills')}
                             active={tab === 'skills'}
                         >
                             {" "}
                             Skills{" "}
                         </TabButton>
-                        <TabButton 
-                            selectTab={() => handleTabChange('education')} 
+                        <TabButton
+                            selectTab={() => handleTabChange('education')}
                             active={tab === 'education'}
                         >
                             {" "}
                             Education{" "}
                         </TabButton>
-                        <TabButton 
-                            selectTab={() => handleTabChange('certifications')} 
+                        <TabButton
+                            selectTab={() => handleTabChange('certifications')}
                             active={tab === 'certifications'}
                         >
                             {" "}
                             Certifications{" "}
                         </TabButton>
                     </div>
-                    <div className='mt-8'>
+                    <div className='mt-8 min-h-40'>
                         {TAB_DATA.find((t) => t.id === tab)?.content}
                     </div>
                 </div>
-            </motion.div>
+            </div>
         </section>
     )
 }

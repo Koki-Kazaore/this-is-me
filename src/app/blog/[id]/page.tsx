@@ -17,16 +17,16 @@ const BlogDetail = async ({ params }: Props) => {
   }
 
   return (
-    <main className="flex min-w-0 max-w-full flex-col min-h-screen bg-[rgb(18,18,18)]">
+    <main className="flex min-w-0 max-w-full flex-col min-h-screen">
       <Navbar />
-      <div className="flex-grow flex w-full min-w-0 max-w-full justify-center items-center mt-24 mx-auto px-4 py-4 sm:px-12">
-        <div className="w-full min-w-0 max-w-full sm:max-w-3xl">
-          <p className="text-gray-400">{article.date}</p>
-          <h1 className="text-4xl font-semibold text-white [overflow-wrap:anywhere]">{article.title}</h1>
-          <div className="prose prose-invert mt-4 min-w-0 max-w-none [overflow-wrap:anywhere]">
+      <div className="mx-auto w-full min-w-0 max-w-3xl flex-grow px-6 pt-24">
+        <article className="pb-16 pt-12 sm:pt-16">
+          <p className="font-mono text-sm text-fg-subtle">{article.date}</p>
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-fg [overflow-wrap:anywhere] sm:text-4xl">{article.title}</h1>
+          <div className="prose prose-invert mt-10 min-w-0 max-w-none [overflow-wrap:anywhere]">
             <ArticleContent content={article.content} />
           </div>
-        </div>
+        </article>
       </div>
       <Footer />
     </main>
