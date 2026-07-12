@@ -1,5 +1,8 @@
 import { defineConfig, devices } from '@playwright/test';
 
+// Allow overriding the port so e2e runs don't collide with other local servers
+const port = Number(process.env.PORT ?? 3000);
+
 export default defineConfig({
   testDir: './e2e/tests',
   fullyParallel: true,
@@ -8,7 +11,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:3000',
+    baseURL: `http://localhost:${port}`,
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
   },
@@ -27,8 +30,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run dev',
-    port: 3000,
+    command: `npm run dev -- -p ${port}`,
+    port,
     reuseExistingServer: !process.env.CI,
   },
 });
