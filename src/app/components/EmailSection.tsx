@@ -6,6 +6,7 @@ import XIcon from '../../../public/x-icon.svg'
 import InstagramIcon from '../../../public/instagram-icon.svg'
 import Link from 'next/link'
 import Image from 'next/image'
+import { sendContactMessage, type ContactMessage } from '@/lib/contact'
 
 const EmailSection: React.FC = () => {
     // State to manage button text
@@ -19,57 +20,22 @@ const EmailSection: React.FC = () => {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // Start transmission process
         setIsSending(true);
 
-        const target = e.target as typeof e.target & {
-            email: { value: string };
-            subject: { value: string };
-            message: { value: string };
-        };
-
-        const data = {
-            email: target.email.value,
-            subject: target.subject.value,
-            message: target.message.value,
-        }
-        const JSONdata = JSON.stringify(data);
-        const endpoint = '/api/send';
-
-        // サーバーにデータを送信するためのリクエストを作成
-        const options = {
-            // データを送信するためPOSTメソッドを定義
-            method: 'POST',
-            // サーバーにJSONを送信することを伝える
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            // リクエストbodyは上記のJSONデータです。
-            body: JSONdata,
-        }
+        const contactMessage: ContactMessage = { email, subject, message };
 
         try {
-            const response = await fetch(endpoint, options);
-            if (!response.ok) {
-                const text = await response.text();
-                // console.log(`HTTP error! status: ${response.status}, body: ${text}`);
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            // Processing when mail is successfully sent
-            // console.log('Message sent.');
-            // Update button text
-            setButtonText('Email sent!');
+            const result = await sendContactMessage(contactMessage);
 
-            // Clear form content after successful submission
-            setEmail('');
-            setSubject('');
-            setMessage('');
-        } catch (error) {
-            // TODO::Notify errors outside of the console
-            // console.error(error);
-            // Error handling (e.g., notifying users if necessary)
+            if (result.success) {
+                setButtonText('Email sent!');
+                setEmail('');
+                setSubject('');
+                setMessage('');
+            }
+            // On failure: keep current visible behavior (no notification yet).
+            // result.error is available for issue #76 to build on.
         } finally {
-            // End of transmission process
             setIsSending(false);
         }
     }
