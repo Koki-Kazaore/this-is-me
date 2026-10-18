@@ -8,7 +8,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { sendContactMessage, type ContactMessage } from '@/lib/contact'
 
-const INPUT_CLASSES = 'w-full bg-transparent border-0 border-b border-hairline py-2 text-sm text-fg placeholder:text-fg-subtle focus:border-fg focus:outline-none transition-colors'
+const INPUT_CLASSES = 'w-full rounded-sm border border-field-border bg-field px-3 py-2 text-sm text-fg placeholder:text-fg-subtle focus:border-fg focus:outline-none transition-colors'
 
 const LABEL_CLASSES = 'mb-2 block font-mono text-xs uppercase tracking-widest text-fg-subtle'
 
@@ -121,7 +121,7 @@ const EmailSection: React.FC = () => {
 
                         <button
                             type='submit'
-                            className='w-fit border border-hairline px-6 py-2.5 text-sm text-fg transition-colors hover:border-fg disabled:opacity-50'
+                            className='w-fit border border-field-border px-6 py-2.5 text-sm text-fg transition-colors hover:border-fg disabled:opacity-50'
                             disabled={isSending} // Disable button during transmission
                         >
                             {buttonText}

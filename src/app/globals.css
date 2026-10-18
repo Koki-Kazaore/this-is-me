@@ -8,6 +8,8 @@
   --color-fg-muted: #a0a0a0;
   --color-fg-subtle: #6b6b6b;
   --color-hairline: rgba(255, 255, 255, 0.08);
+  --color-field: rgba(255, 255, 255, 0.04);        /* input surface, slightly lighter than bg */
+  --color-field-border: rgba(255, 255, 255, 0.36); /* ~#626262 on #0a0a0a, >= 3:1 non-text contrast (WCAG 1.4.11) */
 }
 
 body {

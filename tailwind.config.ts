@@ -62,6 +62,10 @@ const config: Config = {
         subtle: 'var(--color-fg-subtle)',
       },
       hairline: 'var(--color-hairline)',
+      field: {
+        DEFAULT: 'var(--color-field)',
+        border: 'var(--color-field-border)',
+      },
       // Legacy aliases — remove once every component is migrated to tokens
       primary: colors.green,
       secondary: colors.yellow,
