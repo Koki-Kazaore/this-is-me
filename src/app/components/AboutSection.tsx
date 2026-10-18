@@ -17,19 +17,23 @@ const TAB_DATA: TabDataItem[] = [
             <ul className='space-y-4 text-sm'>
                 <li>
                     <span className='text-fg'>Programming Language</span><br />
-                    <span className='text-fg-muted'>C / C++ / Python / PHP / JavaScript</span>
+                    <span className='text-fg-muted'>Ruby / TypeScript / JavaScript</span>
                 </li>
                 <li>
                     <span className='text-fg'>Framework / Library</span><br />
-                    <span className='text-fg-muted'>Flask / Laravel / Numpy / Next.js</span>
+                    <span className='text-fg-muted'>Ruby on Rails / React / Next.js / Sidekiq</span>
                 </li>
                 <li>
                     <span className='text-fg'>Database</span><br />
-                    <span className='text-fg-muted'>MySQL / SQLite</span>
+                    <span className='text-fg-muted'>MySQL / PostgreSQL</span>
+                </li>
+                <li>
+                    <span className='text-fg'>Testing</span><br />
+                    <span className='text-fg-muted'>RSpec / Vitest / Playwright</span>
                 </li>
                 <li>
                     <span className='text-fg'>Tools</span><br />
-                    <span className='text-fg-muted'>Git / Docker / Azure</span>
+                    <span className='text-fg-muted'>Git / Docker / AWS / GitHub Actions</span>
                 </li>
             </ul>
         )
@@ -52,7 +56,7 @@ const TAB_DATA: TabDataItem[] = [
         content: (
             <ul className='space-y-4 text-sm'>
                 <li>
-                    <span className='text-fg-muted'>AZ-900 : Azure Fandamentals</span>
+                    <span className='text-fg-muted'>AZ-900 : Azure Fundamentals</span>
                 </li>
             </ul>
         )
@@ -82,12 +86,13 @@ const AboutSection: React.FC = () => {
                 />
                 <div className='md:col-span-3'>
                     <p className='text-base leading-relaxed text-fg-muted'>
-                        Hi, I&apos;m Koki Kazaore. I&apos;m originally from Shiga and I live in Fukui, Japan. I&apos;m styding IoT and network sercurity related to IoT at the Graduate School of Engineering , Fukui University.<br />
-                        Additionary, I&apos;m working as an intern web application engineer at a SaaS company in Osaka.<br />
+                        Hi, I&apos;m Koki Kazaore. I&apos;m originally from Shiga and now live in Tokyo, Japan.<br />
+                        I work as a software engineer at a logistics SaaS company. My core is backend development with Ruby on Rails, but I work across the full stack, from React on the frontend to the AWS infrastructure behind it.<br />
+                        Before that, I studied IoT and network security at the Graduate School of Engineering, Fukui University.<br />
                         <br />
                         My hobbies include working out and watching sports. I like various kinds of sports, but I&apos;m especially fond of soccer, baseball, and American football.<br />
                         <br />
-                        I spend my days feeling grateful for the opportunity to study what I love all day long.
+                        I&apos;m grateful to spend my days building things I care about.
                     </p>
                     <div className='mt-10 flex flex-row gap-6'>
                         <TabButton

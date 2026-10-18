@@ -18,7 +18,7 @@ test("Homepage displays correctly", async ({ page }) => {
 
   // Role line under the heading
   await expect(
-    heroSection.getByText("Backend Engineer — Tokyo, JP")
+    heroSection.getByText("Software Engineer — Tokyo, JP")
   ).toBeVisible({ timeout: 10000 });
 });
 

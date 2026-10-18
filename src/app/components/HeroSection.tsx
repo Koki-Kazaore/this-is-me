@@ -17,11 +17,11 @@ const HeroSection = () => {
             Koki Kazaore
         </h1>
         <p className='mt-3 font-mono text-sm text-fg-subtle'>
-            Backend Engineer — Tokyo, JP
+            Software Engineer — Tokyo, JP
         </p>
         <p className='mt-8 max-w-xl text-base leading-relaxed text-fg-muted sm:text-lg'>
-            I am studying the development of IoT prototypes and network security in university.
-            Additionally, I am working on web application development as an intern web application engineer.
+            I&apos;m a backend-focused full-stack engineer at a logistics SaaS company.
+            I build primarily with Ruby on Rails, and work across the frontend and infrastructure as well.
         </p>
         <div className='mt-10 flex items-center gap-8'>
             <button

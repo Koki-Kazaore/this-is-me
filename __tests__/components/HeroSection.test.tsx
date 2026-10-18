@@ -24,11 +24,11 @@ describe('HeroSection', () => {
 
     // Check for the name heading and role line
     expect(screen.getByRole('heading', { name: 'Koki Kazaore' })).toBeInTheDocument();
-    expect(screen.getByText('Backend Engineer — Tokyo, JP')).toBeInTheDocument();
+    expect(screen.getByText('Software Engineer — Tokyo, JP')).toBeInTheDocument();
 
     // Check for the description text
-    expect(screen.getByText(/I am studying the development of IoT prototypes and network security in university./i)).toBeInTheDocument();
-    expect(screen.getByText(/Additionally, I am working on web application development as an intern web application engineer./i)).toBeInTheDocument();
+    expect(screen.getByText(/backend-focused full-stack engineer at a logistics SaaS company/i)).toBeInTheDocument();
+    expect(screen.getByText(/I build primarily with Ruby on Rails/i)).toBeInTheDocument();
 
     // Check for buttons
     expect(screen.getByText('Contact me')).toBeInTheDocument();
@@ -75,7 +75,7 @@ describe('HeroSection', () => {
     expect(headingElement).toHaveClass('text-fg');
 
     // Role line uses the mono meta treatment
-    const roleElement = screen.getByText('Backend Engineer — Tokyo, JP');
+    const roleElement = screen.getByText('Software Engineer — Tokyo, JP');
     expect(roleElement).toHaveClass('font-mono');
     expect(roleElement).toHaveClass('text-fg-subtle');
   });
