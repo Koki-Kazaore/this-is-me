@@ -6,7 +6,7 @@ describe('ProjectsSection', () => {
   it('displays section headings and all projects initially', () => {
     render(<ProjectsSection />);
 
-    const heading = screen.getByRole('heading', { name: /my projects/i });
+    const heading = screen.getByRole('heading', { name: /projects/i });
     expect(heading).toBeInTheDocument();
 
     expect(screen.getByText('PFC BALANCE')).toBeInTheDocument();

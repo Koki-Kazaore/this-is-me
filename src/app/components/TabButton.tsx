@@ -1,5 +1,4 @@
 import React, {ReactNode} from 'react'
-import { motion } from 'framer-motion'
 
 // TabButtonコンポーネントのpropsの型を定義
 interface TabButtonProps {
@@ -8,25 +7,16 @@ interface TabButtonProps {
     children: ReactNode;
 }
 
-const variants = {
-    default: { width: 0},
-    active: { width: 'calc(100% - 0.75rem' },
-};
-
 const TabButton: React.FC<TabButtonProps> = ({ active, selectTab, children }) => {
-    const buttonClasses = active 
-        ? 'text-white' 
-        : 'text-[#ADB7BE]'
+    const buttonClasses = active
+        ? 'border-fg text-fg'
+        : 'border-transparent text-fg-subtle hover:text-fg-muted'
     return (
-        <button onClick={selectTab}>
-            <p className={`mr-3 font-semibold hover:text-white ${buttonClasses}`}>
-                {children}
-            </p>
-            <motion.div
-                animate={active ? 'active' : 'default'}
-                variants={variants}
-                className='h-1 bg-primary-500 mt-2 mr-3'
-            ></motion.div>
+        <button
+            onClick={selectTab}
+            className={`border-b pb-1 font-mono text-sm transition-colors ${buttonClasses}`}
+        >
+            {children}
         </button>
     )
 }
