@@ -10,8 +10,7 @@ const IconButton: React.FC<IconButtonProps> = ({ isOpen, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className='flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200
-                 hover:text-white hover:border-white'
+      className='flex items-center p-2 text-fg-muted transition-colors hover:text-fg'
     >
       {isOpen ? (
         <XMarkIcon className='h-5 w-5' />

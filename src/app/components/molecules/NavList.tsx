@@ -17,26 +17,26 @@ const NavList: React.FC<NavListProps> = ({
 }) => {
   if (direction === 'horizontal') {
     return (
-      <ul className='flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0'>
+      <ul className='flex items-center gap-8'>
         {links.map((link, index) => (
           <AtomLink
             key={index}
             href={link.path}
             label={link.title}
-            className='block py-2 pl-3 pr-4 text-[#ADB7BE] sm:text-xl rounded md:p-0 hover:text-white'
+            className='text-sm text-fg-muted transition-colors hover:text-fg'
           />
         ))}
       </ul>
     )
   }
   return (
-    <ul className='flex flex-col py-4 items-center'>
+    <ul className='flex flex-col items-center gap-4 border-t border-hairline py-6'>
       {links.map((link, index) => (
         <AtomLink
           key={index}
           href={link.path}
           label={link.title}
-          className='block py-2 pl-3 pr-4 text-[#ADB7BE] sm:text-xl rounded md:p-0 hover:text-white'
+          className='text-sm text-fg-muted transition-colors hover:text-fg'
         />
       ))}
     </ul>
