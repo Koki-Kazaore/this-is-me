@@ -117,8 +117,16 @@ const AboutSection: React.FC = () => {
                             Certifications{" "}
                         </TabButton>
                     </div>
-                    <div className='mt-8 min-h-40'>
-                        {TAB_DATA.find((t) => t.id === tab)?.content}
+                    <div className='mt-8 grid'>
+                        {TAB_DATA.map((t) => (
+                            <div
+                                key={t.id}
+                                className={`[grid-area:1/1] ${t.id === tab ? '' : 'invisible'}`}
+                                aria-hidden={t.id !== tab}
+                            >
+                                {t.content}
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
