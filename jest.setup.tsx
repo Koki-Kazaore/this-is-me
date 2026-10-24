@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 import React from 'react';
+import { randomUUID } from 'crypto';
 
 // Mock replacing next/image with a simple <img> tag
 jest.mock('next/image', () => {
@@ -44,4 +45,13 @@ if (typeof window !== 'undefined' && !window.IntersectionObserver) {
   window.IntersectionObserver = IntersectionObserverMock;
 } else if (typeof global.IntersectionObserver === 'undefined') {
   global.IntersectionObserver = IntersectionObserverMock as any;
+}
+
+// jsdom does not implement crypto.randomUUID; fall back to Node's implementation
+if (typeof globalThis.crypto?.randomUUID !== 'function') {
+  if (globalThis.crypto) {
+    Object.defineProperty(globalThis.crypto, 'randomUUID', { value: randomUUID, configurable: true });
+  } else {
+    Object.defineProperty(globalThis, 'crypto', { value: { randomUUID }, configurable: true });
+  }
 }

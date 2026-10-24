@@ -1,7 +1,50 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import mermaid from 'mermaid'
+import mermaid, { type MermaidConfig } from 'mermaid'
+
+const MERMAID_CONFIG: MermaidConfig = {
+  startOnLoad: true,
+  theme: 'dark',
+  themeVariables: {
+    primaryColor: '#ffffff',
+    primaryTextColor: '#ffffff',
+    primaryBorderColor: '#ffffff',
+    lineColor: '#ffffff',
+    secondaryColor: '#444444',
+    tertiaryColor: '#555555',
+    background: 'transparent',
+    secondaryBorderColor: '#ffffff',
+    tertiaryBorderColor: '#ffffff',
+    nodeTextColor: '#ffffff',
+    mainBkg: '#1a1a1a',
+    secondaryBkg: '#444444',
+    tertiaryBkg: '#555555',
+  }
+}
+
+let isMermaidInitialized = false
+
+// Initialize mermaid only once per page; called from useEffect so it never runs during SSR
+const ensureMermaidInitialized = () => {
+  if (isMermaidInitialized) return
+  mermaid.initialize(MERMAID_CONFIG)
+  isMermaidInitialized = true
+}
+
+let fallbackIdCounter = 0
+
+// crypto.randomUUID is only exposed in secure contexts (HTTPS/localhost), so plain-HTTP
+// access such as http://192.168.x.x needs a fallback. Ids stay within [a-z0-9-] to remain
+// valid as DOM ids and CSS selectors.
+const createGraphId = () => {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return `mermaid-${crypto.randomUUID()}`
+  }
+  fallbackIdCounter += 1
+  // Random suffix avoids collisions when the counter restarts (HMR or multiple module copies)
+  return `mermaid-${fallbackIdCounter.toString(36)}-${Math.random().toString(36).slice(2, 10)}`
+}
 
 interface MermaidRendererProps {
   chart: string
@@ -12,29 +55,10 @@ const MermaidRenderer: React.FC<MermaidRendererProps> = ({ chart }) => {
 
   useEffect(() => {
     if (elementRef.current) {
-      // Initialize mermaid with configuration
-      mermaid.initialize({
-        startOnLoad: true,
-        theme: 'dark',
-        themeVariables: {
-          primaryColor: '#ffffff',
-          primaryTextColor: '#ffffff',
-          primaryBorderColor: '#ffffff',
-          lineColor: '#ffffff',
-          secondaryColor: '#444444',
-          tertiaryColor: '#555555',
-          background: 'transparent',
-          secondaryBorderColor: '#ffffff',
-          tertiaryBorderColor: '#ffffff',
-          nodeTextColor: '#ffffff',
-          mainBkg: '#1a1a1a',
-          secondaryBkg: '#444444',
-          tertiaryBkg: '#555555',
-        }
-      })
+      ensureMermaidInitialized()
 
       // Generate unique ID for each diagram
-      const graphId = `mermaid-${Math.random().toString(36).slice(2, 11)}`
+      const graphId = createGraphId()
 
       // Clear the element and render the diagram
       elementRef.current.innerHTML = ''
